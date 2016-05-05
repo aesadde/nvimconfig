@@ -1,0 +1,9 @@
+*.un~
+*.o
+.netrwhist
+*tmp*
+haskellmode.config
+.sessions
+*tags*
+plugged/*
+.cache
