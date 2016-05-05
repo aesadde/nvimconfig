@@ -4,6 +4,7 @@ autocmd! BufWritePost *.md Neomake!
 autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 0
 let g:neomake_list_height = 8
+let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -28,6 +29,8 @@ let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
 let g:haskell_conceal_wide = 1
+let g:hlintRefactor#disableDefaultKeybindings = 1
+
 augroup haskell
     au!
     au FileType haskell set tabstop=8                   "A tab is 8 spaces

@@ -1,5 +1,5 @@
 " ===[ vim-plug init ]=== {{{1
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/plugins')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim'
@@ -18,6 +18,7 @@ Plug 'Twinside/vim-hoogle',             { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools',              { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim',       { 'for': 'haskell' }
 Plug 'eagletmt/ghcmod-vim',             { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim',   { 'for': 'haskell' }
 
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses

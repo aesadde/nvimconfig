@@ -8,6 +8,9 @@ inoremap jj <ESC>
 "fast saving
 nnoremap <Leader>w :w!<CR>
 
+"Clear highlights from search
+nnoremap <Leader>/ :nohls<CR>
+
 "fast vimrc editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -24,31 +27,47 @@ nnoremap <Leader>p p=`]
 "indenta de manera correcta todo el archivo
 nnoremap <Leader>= 1G=G
 "}}}
-" ===[ Plugins shortcuts ]=== {{{
-"gundo
+" ===[ Plugins shortcuts ]=== {{{1
+"===[ gundo ]=== {{{2
 nnoremap <Leader>u :GundoToggle<CR>
+"2}}}
 
-"ghc-mod (haskell)
+"===[ haskell plugins ]=== {{{2
+"ghc-mod
 map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
 
-"latex-box
+" hlint
+map <silent> <leader>hr :call ApplyOneSuggestion()<CR>
+map <silent> <leader>hR :call ApplyAllSuggestions()<CR>
+" Hoogle the word under the cursor
+nnoremap <silent> <leader>hh :Hoogle<CR>
+" Hoogle and prompt for input
+nnoremap <leader>hH :Hoogle
+" Hoogle for detailed documentation (e.g. "Functor")
+nnoremap <silent> <leader>hi :HoogleInfo<CR>
+" Hoogle for detailed documentation and prompt for input
+nnoremap <leader>hI :HoogleInfo
+" Hoogle, close the Hoogle window
+nnoremap <silent> <leader>hz :HoogleClose<CR>
+"2}}}
+
+"===[ latex-box ]=== {{{2
 " display current line in Skim
 map <silent> <Leader>ls :silent
             \ !/Applications/Skim.app/Contents/SharedSupport/displayline
             \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
             \ "%:p" <CR>
+"2}}}
 
-"Clear highlights from search
-nnoremap <Leader>/ :nohls<CR>
-
-"Tagbar
+"=== [ Tagbar ]=== {{{2
 "abre la lista de tags
 nnoremap <Leader>tb :TagbarToggle<CR>
+"2}}}
 
-"Unite
+"=== [ Unite ]=== {{{2
 " search a file in the filetree
 nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 " reset not it is <C-l> normally
@@ -65,7 +84,8 @@ endfunction
 
 inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
-"}}}
+"2}}}
+"1}}}
 " ===[ Motion ]=== {{{1
 "one screen line at a time (instead of vim line)
 nnoremap j gj
