@@ -31,6 +31,9 @@ nnoremap <Leader>= 1G=G
 "===[ gundo ]=== {{{2
 nnoremap <Leader>u :GundoToggle<CR>
 "2}}}
+"===[ nerdtree ]=== {{{2
+map <Leader>n :NERDTreeToggle<CR>
+"2}}}
 
 "===[ haskell plugins ]=== {{{2
 "ghc-mod
@@ -125,4 +128,9 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"
+"===[ UltiSnips ]=== {{{2
+" let g:UltiSnipsJumpForwardTrigger = "<TAB>"
+" let g:UltiSnipsJumpBackwardTrigger= "<S-TAB>"
+"2}}}
 "1}}}

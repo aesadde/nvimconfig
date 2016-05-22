@@ -1,3 +1,5 @@
+# vim: foldmethod=marker
+
 snippet haddockm
 {-|
 Module      : W
@@ -9,17 +11,144 @@ Stability   : ${3:experimental}
 Portability : ${4:POSIX}
 
 $5
+
+--------------------------------------------------------------------------------
+-- |
+-- Module      : ${1: `!v expand("%:t:r")`}
+-- Note        : ${2: Note}
+--
+-- ${3: Descrption}
+--
+--------------------------------------------------------------------------------
 -}
 endsnippet
 
+# Statements {{{
 snippet sec
 -- ================================================================================
 -- ================================== ${1: title} =================================
 -- ================================================================================
 endsnippet
 
-snippet _init
-module `!v expand("%:t:r")` where
+snippet mod
+module ${1: `!v expand("%:t:r")`} ($2) where
+endsnippet
+
+snippet rec "Data record" !b
+data ${1:Type} = $1
+		{ ${3:field} :: ${4:Type}
+		} deriving (${5:Classes})
+endsnippet
+
+snippet cls "Type class definition" !b
+class ${1:Name} where
+		$0
+endsnippet
+
+snippet in "Instance definition" !b
+instance ${1:Class} ${2:Type} where
+		$0
 endsnippet
 
 
+# Pragmas {{{
+
+snippet pragma "Compiler pragma" !b
+{-# $1 #-}
+endsnippet
+
+snippet lang "LANGUAGE pragma" !b
+{-# LANGUAGE $1 #-}
+endsnippet
+
+snippet ghcopt "GHC options" !b
+{-# OPTIONS_GHC $1 #-}
+endsnippet
+
+snippet preproc "Preprocessor" !b
+{-# OPTIONS_GHC -F -pgmF ${1:executable} #-}
+endsnippet
+
+snippet trhsx "HSP/HSX Preprocessor (trhsx)" !b
+{-# OPTIONS_GHC -F -pgmF trhsx #-}
+endsnippet
+
+snippet hsx "HSP/HSX Preprocessor (hsx2hs)" !b
+{-# OPTIONS_GHC -F -pgmF hsx2hs #-}
+endsnippet
+
+snippet inline "INLINE pragma" !b
+{-# INLINE ${1:name} #-}
+endsnippet
+
+snippet inlinable "INLINABLE pragma" !b
+{-# INLINABLE ${1:name} #-}
+endsnippet
+
+snippet noinline "NOINLINE pragma" !b
+{-# NOINLINE ${1:name} #-}
+endsnippet
+
+snippet specialize "SPECIALIZE pragma" !b
+{-# SPECIALIZE ${1:name} :: ${2:type} #-}
+endsnippet
+
+snippet rules "RULES pragma" !b
+{-# RULES "${1:name}" ${2:rule} #-}
+endsnippet
+
+snippet unpack "UNPACK pragma" !w
+{-# UNPACK #-}
+endsnippet
+
+snippet nounpack "NOUNPACK pragma" !w
+{-# NOUNPACK #-}
+endsnippet
+# }}} Pragmas
+
+
+# Expressions {{{
+
+snippet \ "Lambda" !w
+\\${1:args} -> ${2:expression}
+endsnippet
+
+snippet if "Boolean conditional" !w
+if ${1:condition} then ${2:true} else ${3:false}
+endsnippet
+
+snippet case "Pattern match" !w
+case ${1:scrutinee} of
+	${2:pattern} -> ${3:expression}
+endsnippet
+
+snippet qq "Quasi quote" !w
+[${1:quoter}|${2:content}|]
+endsnippet
+
+# }}} Expressions
+
+# Definitions {{{
+
+snippet :: "Type signature" !b
+${1:name} :: ${2:Type}
+endsnippet
+
+snippet => "Class constraint" !w
+${1:Class} ${2:variable} => $2
+endsnippet
+
+snippet fun "Function definition" !b
+-- | ${5:Documentation for '$1'}
+$1 :: ${3:Type} -> ${4:Type}
+${1:name} ${2:args} = ${6:error "undefined: \`$1' in `!v expand('%')`"}
+endsnippet
+
+snippet def "Value definition" !b
+-- | ${4:Documentation for $1}
+$1 :: ${2:Type}
+${1:name} = ${5:error "undefined: \`$1' in `!v expand('%')`"}
+endsnippet
+
+# }}} Definitions
+## Most of these snippets are taken from vim2hs

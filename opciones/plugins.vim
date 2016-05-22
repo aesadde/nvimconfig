@@ -2,9 +2,11 @@
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *.md Neomake!
 autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 0
-let g:neomake_list_height = 8
+let g:neomake_open_list = 1
+let g:neomake_list_height = 10
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
+let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
+    kj
 " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -28,21 +30,14 @@ let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
-let g:haskell_conceal_wide = 1
+let g:haskell_conceal_wide = 2
 let g:hlintRefactor#disableDefaultKeybindings = 1
+let g:ghcmod_hlint_options = ['--ignore=Redundant $']
 
 augroup haskell
     au!
-    au FileType haskell set tabstop=8                   "A tab is 8 spaces
-    au FileType haskell set expandtab                   "Always uses spaces instead of tabs
-    au FileType haskell set softtabstop=4               "Insert 4 spaces when tab is pressed
-    au FileType haskell set shiftwidth=4                "An indent is 4 spaces
-    au FileType haskell set shiftround                  "Round indent to nearest shiftwidth multiple
     au FileType haskell let g:haskellmode_completion_ghc = 0
     au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
-    autocmd FileType haskell nnoremap <buffer> <leader>tt :HdevtoolsType<CR>
-    autocmd FileType haskell nnoremap <buffer> <silent> <leader>th :HdevtoolsClear<CR>
-    autocmd FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
     au FileType haskell set tags=tags;/,codex.tags;/
     au FileType haskell set csprg=~/.local/bin/hscope
     au FileType haskell set csto=1 " search codex tags first
@@ -95,7 +90,14 @@ if !exists('g:deoplete#omni_patterns')
 endif
 let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:deoplete#omni_patterns.java = '\k\.\k*'
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+let g:deoplete#omni#input_patterns.java = [
+                \'[^. \t0-9]\.\w*',
+                \'[^. \t0-9]\->\w*',
+                \'[^. \t0-9]\::\w*',
+                \'\s[A-Z][a-z]',
+                \'^\s*@[A-Z][a-z]'
+                \]
 
 " Uses lists from similar files
 if !exists('g:deoplete_sources')
@@ -157,47 +159,34 @@ let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
 
 "haskell tags
-if executable("hasktags")
+if executable('lushtags')
     let g:tagbar_type_haskell = {
-                \ 'ctagsbin'  : 'hasktags',
-                \ 'ctagsargs' : '-x -c -o-',
-                \ 'kinds'     : [
-                \  'm:modules:0:1',
-                \ 'e:exports:1',
-                \ 'i:imports:1',
-                \ 't:declarations:0',
-                \ 'd:declarations:1',
-                \ 'n:declarations:1',
-                \ 'f:functions:0',
-                \ 'c:constructors:0',
-                \  'd:data: 0:1',
-                \  'd_gadt: data gadt:0:1',
-                \  't:type names:0:1',
-                \  'nt:new types:0:1',
-                \  'c:classes:0:1',
-                \  'cons:constructors:1:1',
-                \  'c_gadt:constructor gadt:1:1',
-                \  'c_a:constructor accessors:1:1',
-                \  'ft:function types:1:1',
-                \  'fi:function implementations:0:1',
-                \  'o:others:0:1'
-                \ ],
-                \ 'sro'        : '.',
-                \ 'kind2scope' : {
-                \ 'm' : 'module',
-                \ 'c' : 'class',
-                \ 'd' : 'data',
-                \ 'n' : 'newtype',
-                \ 't' : 'type'
-                \ },
-                \ 'scope2kind' : {
-                \ 'module' : 'm',
-                \ 'class'  : 'c',
-                \ 'n' : 'newtype',
-                \ 'data'   : 'd',
-                \ 'type'   : 't'
-                \ }
-                \ }
+        \ 'ctagsbin' : 'lushtags',
+        \ 'ctagsargs' : '--ignore-parse-error --',
+        \ 'kinds' : [
+            \ 'm:module:0',
+            \ 'e:exports:1',
+            \ 'i:imports:1',
+            \ 't:declarations:0',
+            \ 'd:declarations:1',
+            \ 'n:declarations:1',
+            \ 'f:functions:0',
+            \ 'c:constructors:0'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+            \ 'd' : 'data',
+            \ 'n' : 'newtype',
+            \ 'c' : 'constructor',
+            \ 't' : 'type'
+        \ },
+        \ 'scope2kind' : {
+            \ 'data' : 'd',
+            \ 'newtype' : 'n',
+            \ 'constructor' : 'c',
+            \ 'type' : 't'
+        \ }
+    \ }
 endif
 
 "Latex tags
@@ -242,4 +231,5 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
             \ ], '\|'))
 "2}}}
 let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
+
 "1}}}
