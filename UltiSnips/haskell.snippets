@@ -2,16 +2,17 @@
 
 snippet haddockm
 {-|
-Module      : W
-Description : ${1: Short description}
+Module      : ${1: `!v expand("%:t:r")`}
+Description : ${2: Short description}
 Copyright   : (c) Alberto, `date +%Y`
-License     : ${2:GPL-3}
+License     : ${3:GPL-3}
 Maintainer  : albertosadde@gmail.com
-Stability   : ${3:experimental}
-Portability : ${4:POSIX}
+Stability   : ${4:experimental}
+-}
+$6
+endsnippet
 
-$5
-
+snippet modDesc
 --------------------------------------------------------------------------------
 -- |
 -- Module      : ${1: `!v expand("%:t:r")`}
@@ -20,14 +21,13 @@ $5
 -- ${3: Descrption}
 --
 --------------------------------------------------------------------------------
--}
 endsnippet
 
 # Statements {{{
 snippet sec
--- ================================================================================
--- ================================== ${1: title} =================================
--- ================================================================================
+--------------------------------------------------------------------------------
+-- $1 ------------------------------------------------------
+--------------------------------------------------------------------------------
 endsnippet
 
 snippet mod
@@ -52,7 +52,6 @@ endsnippet
 
 
 # Pragmas {{{
-
 snippet pragma "Compiler pragma" !b
 {-# $1 #-}
 endsnippet

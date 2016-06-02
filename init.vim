@@ -101,6 +101,11 @@ augroup markdown
   au FileType markdown setlocal spell
   set conceallevel=0
   augroup END
+
+" Git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
 " 2}}}
 " 1}}}
 " ===[ Acknowledgments ]=== {{{1

@@ -35,15 +35,20 @@ let g:hlintRefactor#disableDefaultKeybindings = 1
 let g:ghcmod_hlint_options = ['--ignore=Redundant $']
 
 augroup haskell
-    au!
-    au FileType haskell let g:haskellmode_completion_ghc = 0
-    au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
-    au FileType haskell set tags=tags;/,codex.tags;/
-    au FileType haskell set csprg=~/.local/bin/hscope
-    au FileType haskell set csto=1 " search codex tags first
-    au FileType haskell set cst
-    au FileType haskell set csverb
-    au FileType haskell set completeopt+=longest
+  au!
+  au BufWritePost *.hs            silent !fast-tags %
+  au BufWritePost *.hsc           silent !fast-tags %
+  au FileType haskell let g:haskellmode_completion_ghc = 0
+  au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
+  au FileType haskell set tags=tags;/,codex.tags;/
+  au FileType haskell set cst
+  au FileType haskell set csverb
+  au FileType haskell set completeopt+=longest
+  " try gf on import line, or ctrl-x ctrl-i, or [I, [i, ..
+  " Added from haskell-mode vim
+  " au FileType haskell setlocal include=^import\\s*\\(qualified\\)\\?\\s*
+  " au FileType haskell setlocal includeexpr=substitute(v:fname,'\\.','/','g').'.'
+  " au FileType haskell setlocal suffixesadd=hs,lhs,hsc
 augroup END
 "2}}}
 " ===[ delimitMate ]=== {{{2
@@ -153,7 +158,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 "2}}}
 "===[ TagBar]=== {{{2
-let g:tagbar_width=26
+let g:tagbar_width=30
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
