@@ -6,7 +6,6 @@ let g:neomake_open_list = 1
 let g:neomake_list_height = 10
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
-    kj
 " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -37,18 +36,12 @@ let g:ghcmod_hlint_options = ['--ignore=Redundant $']
 augroup haskell
   au!
   au BufWritePost *.hs            silent !fast-tags %
-  au BufWritePost *.hsc           silent !fast-tags %
   au FileType haskell let g:haskellmode_completion_ghc = 0
   au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
   au FileType haskell set tags=tags;/,codex.tags;/
   au FileType haskell set cst
   au FileType haskell set csverb
   au FileType haskell set completeopt+=longest
-  " try gf on import line, or ctrl-x ctrl-i, or [I, [i, ..
-  " Added from haskell-mode vim
-  " au FileType haskell setlocal include=^import\\s*\\(qualified\\)\\?\\s*
-  " au FileType haskell setlocal includeexpr=substitute(v:fname,'\\.','/','g').'.'
-  " au FileType haskell setlocal suffixesadd=hs,lhs,hsc
 augroup END
 "2}}}
 " ===[ delimitMate ]=== {{{2
