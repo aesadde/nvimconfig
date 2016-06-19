@@ -35,6 +35,7 @@ Plug 'Raimondi/delimitMate'   " auto close pairs
 "Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'tpope/vim-markdown',           {'for': 'markdown'}
+Plug 'rhysd/unite-redpen.vim',       {'for': 'markdown,latex,tex,txt'}
 
 "Scala
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting

@@ -5,6 +5,7 @@ autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 1
 let g:neomake_list_height = 10
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
+let g:neomake_haskell_hlint_args = ['--hint=Default', '--hint=Dollar']
 let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
 " 2}}}
 " ===[ golden-view ]=== {{{2
