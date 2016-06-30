@@ -30,8 +30,12 @@ snippet sec
 --------------------------------------------------------------------------------
 endsnippet
 
+snippet sep
+-- $1 --------------------------------------------------------------------------
+endsnippet
+
 snippet mod
-module ${1: `!v expand("%:t:r")`} ($2) where
+module ${1: `!v expand("%:t:r")`} where
 endsnippet
 
 snippet rec "Data record" !b

@@ -7,3 +7,4 @@ haskellmode.config
 *tags*
 plugged/*
 .cache
+.init.vim-rplugin~

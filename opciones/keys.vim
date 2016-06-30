@@ -80,6 +80,9 @@ nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 nnoremap // :Unite grep:.<cr>
 nnoremap <leader>b :Unite buffer<cr>
 
+"grep tasks
+nnoremap <silent><leader>ut :Unite -silent -auto-resize grep:%::TODO\:\|FIXME\:\|NOTE\:<CR>
+
 function! UltiSnipsCallUnite()
   Unite -start-insert -winheight=100 -immediately -no-empty ultisnips
   return ''

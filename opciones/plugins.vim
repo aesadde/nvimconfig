@@ -2,10 +2,11 @@
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *.md Neomake!
 autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 1
-let g:neomake_list_height = 10
+let g:neomake_open_list = 2 "always open error
+let g:neomake_list_height = 5
+let g:make_place_signs=2 "place error signs always
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-let g:neomake_haskell_hlint_args = ['--hint=Default', '--hint=Dollar']
+let g:neomake_haskell_hlint_args = ['--hint=Dollar']
 let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
 " 2}}}
 " ===[ golden-view ]=== {{{2
@@ -24,19 +25,22 @@ call airline#parts#define_raw('linec', '%L')
 let g:airline_section_z = airline#section#create(['%3p%%', 'linenr', '/', 'linec', ':%3c '])
 "2}}}
 " ===[ haskell ]=== {{{2
-let g:haskell_enable_quantification = 1
-let g:haskell_enable_recursivedo = 1
-let g:haskell_enable_arrowsyntax = 1
-let g:haskell_enable_pattern_synonyms = 1
-let g:haskell_enable_typeroles = 1
-let g:haskell_enable_static_pointers = 1
-let g:haskell_conceal_wide = 2
+let g:haskell_enable_quantification           = 1
+let g:haskell_enable_recursivedo              = 1
+let g:haskell_enable_arrowsyntax              = 1
+let g:haskell_enable_pattern_synonyms         = 1
+let g:haskell_enable_typeroles                = 1
+let g:haskell_enable_static_pointers          = 1
+let g:haskell_conceal_wide                    = 0
+let g:haskell_conceal                         = 0
+let g:haskell_conceal_enumerations            = 0
+let g:haskell_hsp                             = 0
 let g:hlintRefactor#disableDefaultKeybindings = 1
-let g:ghcmod_hlint_options = ['--ignore=Redundant $']
+let g:ghcmod_hlint_options                    = ['--ignore=Redundant $']
 
 augroup haskell
   au!
-  au BufWritePost *.hs            silent !fast-tags %
+  au BufWritePost *.hs            silent !init-tags %
   au FileType haskell let g:haskellmode_completion_ghc = 0
   au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
   au FileType haskell set tags=tags;/,codex.tags;/
@@ -108,7 +112,7 @@ let g:deoplete_sources.gitconfig = '_' " In gitconfig buffers, completes from al
 let g:deoplete_sources.scala = 'java' "Complete Scala from Java
 let g:deoplete_sources._ = '_' " In default, completes from all buffers.
 
-autocmd FileType haskell set omnifunc=necoghc#omnifunc "enable onmincompletion
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc "enable onmincompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -153,9 +157,9 @@ nmap ga <Plug>(EasyAlign)
 "2}}}
 "===[ TagBar]=== {{{2
 let g:tagbar_width=30
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:tagbar_autofocus=1
-let g:tagbar_autoclose=1
+let g:tagbar_autoclose=0
 
 "haskell tags
 if executable('lushtags')
@@ -215,10 +219,15 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
 
 " Like ctrlp.vim settings.
 call unite#custom#profile('default', 'context', {
-            \   'start_insert': 1,
+            \   'start_insert': 0,
             \   'winheight': 10,
             \   'direction': 'botright',
             \ })
@@ -229,6 +238,6 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
             \ '\.git/',
             \ ], '\|'))
 "2}}}
-let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
 
+let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
 "1}}}

@@ -36,14 +36,3 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " }}}
-
-function! Pointfree()
-  call setline('.', split(system('pointfree '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
-endfunction
-vnoremap <silent> <leader>h. :call Pointfree()<CR>
-
-function! Pointful()
-  call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
-endfunction
-vnoremap <silent> <leader>h> :call Pointful()<CR>
-

@@ -12,12 +12,15 @@ set display+=lastline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
 set smartindent                         " smart indent
+set noautoindent
+set smarttab
 set splitright                 " Make vertical splits work sanely
 set splitbelow                 " Make horizontal splits work sanely
 set shiftwidth=2
 set shiftround
 set expandtab
 set softtabstop=2
+set tabstop=2
 set ignorecase                 " estas dos opciones sirven para
 set smartcase                  " buscar mejor, ignora mayusculas y las revisa solo si especificado
 filetype on
@@ -44,7 +47,8 @@ augroup END
 set viminfo^=%
 "1}}}
 "===[ Wildmenu ]=== {{{1
-set wildmode=list:longest
+set wildmenu
+set wildmode=longest,list,full
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -53,6 +57,7 @@ set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.hi                            " haskell bin
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX stuff
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 "1}}}
 "===[ Others ]=== {{{1
 set directory=/tmp                    " directory to place swap files in
@@ -85,7 +90,8 @@ endif
 "1}}}
 " ===[ Omni completion options ]=== {{{
 set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menu,preview
+" set completeopt=longest,menu,preview
+set completeopt=menuone,menu,longest
 " }}}
 " ===[ Annoyance Fixers ]==== {{{1
 nnoremap <F1> <nop> "used to toggle help

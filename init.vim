@@ -4,21 +4,28 @@ call plug#begin('~/.config/plugins')
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/deoplete.nvim'
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'sjl/gundo.vim'
 
-Plug 'Yggdroot/indentLine' " show indent lines (matching brackets)
+" Plug 'Yggdroot/indentLine' " show indent lines
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Snippets
 Plug 'scrooloose/nerdtree'
 
 "Haskell Plugins
-Plug 'eagletmt/neco-ghc',             { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle',           { 'for': 'haskell' }
-Plug 'neovimhaskell/haskell-vim',     { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim',           { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim',       { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim',               { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
+Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal' }
+Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
+
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 "Colorschemes
@@ -31,6 +38,7 @@ Plug 'tpope/vim-surround'     " surround things
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'Raimondi/delimitMate'   " auto close pairs
+Plug 'rizzatti/dash.vim'      " dash docsets
 
 "Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
@@ -72,7 +80,7 @@ set gfn=Monaco:h11 " Use large font by default in MacVim
 
 syntax enable
 set background=dark
-colorscheme smyck
+colorscheme zenburn
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " Vim marker folding method for vimscripts {{{2
@@ -88,7 +96,7 @@ augroup END
 " Source the vimrc file after saving it
 augroup sourcing
   autocmd!
-  autocmd bufwritepost .vimrc source $MYVIMRC
+  autocmd bufwritepost $MYVIMRC source $MYVIMRC
 augroup END
 " 2}}}
 " Custom filetypes {{{2
