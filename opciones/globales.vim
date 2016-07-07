@@ -27,6 +27,12 @@ filetype on
 filetype plugin on
 filetype indent on
 "1}}}
+"===[ Show 80th column ]=== {{{1
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=9
+endif
+"1}}}
 "===[ Disable all bells ]=== {{{1
 set t_vb=
 set novisualbell                 " esto sirve para que VIM no suene xD

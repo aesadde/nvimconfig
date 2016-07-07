@@ -114,3 +114,13 @@ plugins
 plugin
 desugared
 GHC
+meta
+yaml
+webpage
+dir
+pandoc
+repo
+typechecks
+desugars
+desugaring
+GHC's

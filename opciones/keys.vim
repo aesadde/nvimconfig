@@ -72,7 +72,7 @@ nnoremap <Leader>tb :TagbarToggle<CR>
 
 "=== [ Unite ]=== {{{2
 " search a file in the filetree
-nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
+nnoremap <C-P> :vs<cr> :<C-u>:UniteWithProjectDir  -start-insert file_rec/async:!<cr>
 " reset not it is <C-l> normally
 nnoremap <leader>ur <Plug>(unite_restart)
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>

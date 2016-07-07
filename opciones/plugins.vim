@@ -209,7 +209,14 @@ let g:tagbar_type_tex = {
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-let g:unite_source_rec_async_command=['ag --nocolor --nogroup -g ""']
+if executable('ag')
+  let g:unite_source_rec_async_command =
+    \ ['ag', '--nocolor', '--nogroup',
+    \  '--depth', '10', '-g', '']
+  " ag is quite fast, so we increase this number
+  let g:unite_source_rec_min_cache_files = 1200
+  let g:unite_source_grep_recursive_opt=''
+endif
 let g:unite_prompt = "➤ "
 let g:unite_enable_ignore_case = 1
 let g:unite_source_history_yank_enable = 1
@@ -219,11 +226,6 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts =
-      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-let g:unite_source_grep_recursive_opt = ''
 
 " Like ctrlp.vim settings.
 call unite#custom#profile('default', 'context', {
@@ -238,6 +240,6 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
             \ '\.git/',
             \ ], '\|'))
 "2}}}
-
 let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
+
 "1}}}
