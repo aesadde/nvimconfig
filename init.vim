@@ -40,6 +40,10 @@ Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'rizzatti/dash.vim'      " dash docsets
 
+" Git
+Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
+Plug 'tpope/vim-fugitive'     " git wrapper
+
 "Pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'tpope/vim-markdown',           {'for': 'markdown'}
