@@ -1,6 +1,5 @@
 " ===[ Plugins ]=== {{{1
 " ===[ Neomake ]=== {{{2
-autocmd! BufWritePost *.md Neomake!
 autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 2 "always open error
 let g:neomake_list_height = 5
@@ -156,7 +155,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 "2}}}
 "===[ TagBar]=== {{{2
-let g:tagbar_width=30
+let g:tagbar_width=50
 " let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=0
@@ -240,6 +239,24 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
             \ '\.git/',
             \ ], '\|'))
 "2}}}
+"===[ UltiSnips ]=== {{{2
+let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsEditSplit='vertical'
+"2}}}
 let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
+"===[ Goyo ]=== {{{
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+endfunction
 
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+"}}}
 "1}}}

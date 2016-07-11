@@ -30,6 +30,7 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
+Plug 'junegunn/seoul256.vim'        "low contrat 'seoul colors'
 
 "Other
 Plug 'bling/vim-airline'      " status line
@@ -39,6 +40,7 @@ Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'rizzatti/dash.vim'      " dash docsets
+Plug 'junegunn/goyo.vim'      " Distraction free writing
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -84,7 +86,7 @@ set gfn=Monaco:h11 " Use large font by default in MacVim
 
 syntax enable
 set background=dark
-colorscheme zenburn
+colorscheme seoul256
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " Vim marker folding method for vimscripts {{{2
