@@ -124,3 +124,10 @@ typechecks
 desugars
 desugaring
 GHC's
+typeclasses
+typesystem
+wildcards
+bytecode
+backend
+LLVM
+typechecked

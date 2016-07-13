@@ -1,6 +1,7 @@
 " ===[ Plugins ]=== {{{1
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost * Neomake
+autocmd! BufWritePost *.md Neomake!
 let g:neomake_open_list = 2 "always open error
 let g:neomake_list_height = 5
 let g:make_place_signs=2 "place error signs always
@@ -246,6 +247,9 @@ let g:UltiSnipsEditSplit='vertical'
 "2}}}
 let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
 "===[ Goyo ]=== {{{
+let g:goyo_width         = 82
+let g:goyo_margin_top    = 2
+let g:goyo_margin_bottom = 2
 function! s:goyo_enter()
   set noshowmode
   set noshowcmd

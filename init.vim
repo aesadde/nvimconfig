@@ -64,7 +64,6 @@ Plug 'vim-scripts/cocoa.vim',  { 'for': 'cocoa,swift'} " cocoa plugin
 Plug 'Rip-Rip/clang_complete', { 'for': 'cocoa,swift'}
 Plug 'toyamarinyon/vim-swift', { 'for': 'cocoa,swift'} " swift support
 Plug 'tpope/vim-fugitive'                              " git from vim
-Plug 'neilagabriel/vim-geeknote'
 
 call plug#end()
 "1}}}
@@ -113,6 +112,7 @@ augroup markdown
   autocmd!
   au BufRead,BufNewFile *.md setfiletype markdown
   au BufRead,BufNewFile *.md UltiSnipsAddFiletypes markdown.tex
+  au BufEnter *.md silent! cd ..
   au FileType markdown setlocal spell
   set conceallevel=0
   augroup END
