@@ -41,15 +41,16 @@ Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'rizzatti/dash.vim'      " dash docsets
 Plug 'junegunn/goyo.vim'      " Distraction free writing
+Plug 'pgilad/vim-skeletons'  " automatically insert templates
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'     " git wrapper
 
 "Pandoc
-Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
-Plug 'tpope/vim-markdown',           {'for': 'markdown'}
-Plug 'rhysd/unite-redpen.vim',       {'for': 'markdown,latex,tex,txt'}
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug'vim-pandoc/vim-pandoc'
+Plug 'rhysd/unite-redpen.vim',       {'for': 'pandoc,markdown,latex,tex,txt'}
 
 "Scala
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
@@ -108,13 +109,11 @@ augroup END
 au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
 au! BufNewFile,BufRead *.scpt set filetype=javascript
 
-augroup markdown
+augroup pandoc
   autocmd!
-  au BufRead,BufNewFile *.md setfiletype markdown
-  au BufRead,BufNewFile *.md UltiSnipsAddFiletypes markdown.tex
+  au FileType pandoc UltiSnipsAddFiletypes tex.markdown
+  au FileType pandoc let localleader="\\"
   au BufEnter *.md silent! cd ..
-  au FileType markdown setlocal spell
-  set conceallevel=0
   augroup END
 
 " Git commit messages

@@ -245,7 +245,7 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
 "2}}}
-let g:markdown_fenced_languages = ['html', 'tex', 'bash=sh', 'haskell']
+
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
 let g:goyo_margin_top    = 2
@@ -263,4 +263,13 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
+"
+"=== [ RedPen ]=== {{{
+"}}}
+
+"===[ Pandoc ]=== {{{
+"}}}
+"===[ Skeletons ]=== {{{
+let skeletons#autoRegister = 1
+let skeletons#skeletonsDir = "~/dotfiles/nvim/skeletons"
 "1}}}
