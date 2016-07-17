@@ -65,23 +65,6 @@ let delimitMate_quotes = '" '' `'
 let delimitMate_smart_matchpairs = '^\%(\w\|\!\|£\|\$\|_\|["'']\s*\S\)'
 let delimitMate_smart_quotes = 1
 "2}}}
-" ===[  Latex Box ]=== {{{2
-let g:LatexBox_latexmk_async=1 "enable background latexmk
-let g:LatexBox_latexmk_preview_continuously=1
-let g:LatexBox_quickfix=0
-let g:LatexBox_output_type="pdf"
-let g:LatexBox_folding=1
-"latexmk options to be able to run commands and get output on the file
-let g:LatexBox_latexmk_options="-shell-escape -enable-write18 -pdf"
-let g:LatexBox_viewer="/Applications/Skim.app" "Open files with Skim
-let g:LatexBox_complete_inlineMath=1 "inline math completion
-let g:LatexBox_fold_text=1
-let g:LatexBox_fold_preamble=1
-" use custom mappings instead those provided by default
-let g:LatexBox_no_mappings=1
-
-
-"2}}}
 " ===[  deoplete ]=== {{{2
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 3
@@ -121,7 +104,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 "2}}}
-" ===[Rainbow Parentheses ]=== {{{2
+" ===[ Rainbow Parentheses ]=== {{{2
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
@@ -245,7 +228,6 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
 "2}}}
-
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
 let g:goyo_margin_top    = 2
@@ -263,10 +245,8 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
-"
-"=== [ RedPen ]=== {{{
+"===[ RedPen ]=== {{{
 "}}}
-
 "===[ Pandoc ]=== {{{
 "}}}
 "===[ Skeletons ]=== {{{

@@ -15,7 +15,7 @@ nnoremap <Leader>/ :nohls<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 "1}}}
-" === [ Text formatting ]=== {{{
+" ===[ Text formatting ]=== {{{
 "toggle paste mode
 nnoremap <Leader>ps :set nopaste<CR>
 nnoremap <Leader>sp :set paste<CR>
@@ -28,13 +28,6 @@ nnoremap <Leader>p p=`]
 nnoremap <Leader>= 1G=G
 "}}}
 " ===[ Plugins shortcuts ]=== {{{1
-"===[ gundo ]=== {{{2
-nnoremap <Leader>u :GundoToggle<CR>
-"2}}}
-"===[ nerdtree ]=== {{{2
-map <Leader>n :NERDTreeToggle<CR>
-"2}}}
-
 "===[ haskell plugins ]=== {{{2
 "ghc-mod
 map <silent> tw :GhcModTypeInsert<CR>
@@ -56,37 +49,55 @@ nnoremap <leader>hI :HoogleInfo
 " Hoogle, close the Hoogle window
 nnoremap <silent> <leader>hz :HoogleClose<CR>
 "2}}}
-
-"===[ latex-box ]=== {{{2
-" display current line in Skim
-map <silent> <Leader>ls :silent
-            \ !/Applications/Skim.app/Contents/SharedSupport/displayline
-            \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
-            \ "%:p" <CR>
-"2}}}
-
-"=== [ Tagbar ]=== {{{2
+"===[ Tagbar ]=== {{{2
 "abre la lista de tags
 nnoremap <Leader>tb :TagbarToggle<CR>
 "2}}}
-
-"=== [ Unite ]=== {{{2
+"===[ Unite ]=== {{{2
 " search a file in the filetree
-nnoremap <C-P> :vs<cr> :<C-u>:UniteWithProjectDir  -start-insert file_rec/async:!<cr>
+nnoremap <C-P> :<C-u>:UniteWithProjectDir -start-insert file_rec/async:!<cr>
 " reset not it is <C-l> normally
 nnoremap <leader>ur <Plug>(unite_restart)
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>y :<C-u>Unite -auto-resize -no-split -buffer-name=yank history/yank<cr>
 
-nnoremap // :Unite grep:.<cr>
+nnoremap // :Unite grep:<cr>
 nnoremap <leader>b :Unite buffer<cr>
 
 "grep tasks
-nnoremap <silent><leader>ut :Unite -silent -auto-resize grep:%::TODO\:\|FIXME\:\|NOTE\:<CR>
+nnoremap <silent><leader>ut :Unite -silent -auto-resize grep:%::TODO\|FIXME\|NOTE<CR>
 
 function! UltiSnipsCallUnite()
   Unite -start-insert -winheight=100 -immediately -no-empty ultisnips
   return ''
 endfunction
+
+" more options for working with unite
+" From: https://github.com/Shougo/unite.vim/issues/790
+autocmd filetype unite call s:unite_settings()
+function! s:unite_settings()
+	nnoremap <silent> <buffer><expr> v unite#do_action('right')
+	inoremap <silent> <buffer><expr> <c-v> unite#do_action('right')
+	nnoremap <silent> <buffer><expr> s unite#do_action('below')
+	inoremap <silent> <buffer><expr> <c-s> unite#do_action('below')
+	nnoremap <silent> <buffer><expr> l     unite#do_action('default')
+	inoremap <silent> <buffer><expr> <c-l>
+				\ getcurpos()[1]==1 ? "\<right>" : unite#do_action('default')
+	imap <silent> <buffer> ;         <plug>(unite_choose_action)
+	nmap <silent> <buffer> ;         <plug>(unite_choose_action)
+	nmap <silent> <buffer> <c-o>     <plug>(unite_redraw)
+	imap <silent> <buffer> <c-o>     <plug>(unite_redraw)
+	imap <silent> <buffer> <c-j>     <plug>(unite_select_next_line)
+	imap <silent> <buffer> <c-k>     <plug>(unite_select_previous_line)
+	imap <silent> <buffer> <tab>     <plug>(unite_complete)
+
+	let unite = unite#get_current_unite()
+	if unite.profile_name ==# 'search'
+		nnoremap <silent> <buffer><expr> r unite#do_action('replace')
+	else
+		nnoremap <silent> <buffer><expr> r unite#do_action('rename')
+	endif
+endfunction
+
 
 inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
@@ -131,9 +142,4 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 " inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-"
-"===[ UltiSnips ]=== {{{2
-" let g:UltiSnipsJumpForwardTrigger = "<TAB>"
-" let g:UltiSnipsJumpBackwardTrigger= "<S-TAB>"
-"2}}}
 "1}}}

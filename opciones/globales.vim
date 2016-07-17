@@ -1,28 +1,29 @@
 "Opciones Globales
 "===[ Gui options ]===" {{{1
-set title             " para darle a la ventana el nombre del archivo
-set nowrap              " una linea de texto por pantalla
-set number            " show line numbers
-set lazyredraw        " redraw screen only when needed
-set textwidth=80      " maximo de caracteres por linea
-set showmatch         " show matching brackets
-set cursorline        " set cursorcolumn
-set linebreak         " pica lineas largas en el buffer para que se vea mejor
+set title        " para darle a la ventana el nombre del archivo
+set nowrap       " una linea de texto por pantalla
+set number       " show line numbers
+set lazyredraw   " redraw screen only when needed
+set textwidth=79 " maximo de caracteres por linea
+set showmatch    " show matching brackets
+set cursorline   " set cursorcolumn
+set linebreak    " pica lineas largas en el buffer para que se vea mejor
 set display+=lastline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
-set smartindent                         " smart indent
+set smartindent " smart indent
 set noautoindent
 set smarttab
-set splitright                 " Make vertical splits work sanely
-set splitbelow                 " Make horizontal splits work sanely
+set splitright  " Make vertical splits work sanely
+set splitbelow  " Make horizontal splits work sanely
 set shiftwidth=2
 set shiftround
 set expandtab
 set softtabstop=2
 set tabstop=2
-set ignorecase                 " estas dos opciones sirven para
-set smartcase                  " buscar mejor, ignora mayusculas y las revisa solo si especificado
+set ignorecase  " estas dos opciones sirven para
+set smartcase   " buscar mejor, ignora mayusculas
+
 filetype on
 filetype plugin on
 filetype indent on
@@ -35,8 +36,8 @@ endif
 "1}}}
 "===[ Disable all bells ]=== {{{1
 set t_vb=
-set novisualbell                 " esto sirve para que VIM no suene xD
-set noerrorbells                 " esto para que no ladille cuando hay errores
+set novisualbell " esto sirve para que VIM no suene xD
+set noerrorbells " esto para que no ladille cuando hay errores
 autocmd! GUIEnter * set vb t_vb=
 "1}}}"
 "===[ Line Return on reopening ]=== {{{1
@@ -55,14 +56,14 @@ set viminfo^=%
 "===[ Wildmenu ]=== {{{1
 set wildmenu
 set wildmode=longest,list,full
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=.hg,.git,.svn                        " Version control
+set wildignore+=*.aux,*.out,*.toc                    " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg       " binary images
 set wildignore+=**.~,.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.hi                            " haskell bin
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX stuff
+set wildignore+=*.spl                                " compiled spelling list
+set wildignore+=*.hi                                 " haskell bin
+set wildignore+=*.sw?                                " Vim swap files
+set wildignore+=*.DS_Store                           " OSX stuff
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 "1}}}
 "===[ Others ]=== {{{1
