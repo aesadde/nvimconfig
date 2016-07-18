@@ -1,7 +1,7 @@
 " ===[ Plugins ]=== {{{1
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost * Neomake
-autocmd! BufWritePost *.md Neomake!
+
 let g:neomake_open_list = 2 "always open error
 let g:neomake_list_height = 5
 let g:make_place_signs=2 "place error signs always
@@ -20,9 +20,8 @@ let g:airline_symbols.branch = '⎇' "beautifiers
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
 let g:airline#extensions#whitespace#enabled = 1
+" let g:airline_powerline_fonts = 1
 "show line count of file
-call airline#parts#define_raw('linec', '%L')
-let g:airline_section_z = airline#section#create(['%3p%%', 'linenr', '/', 'linec', ':%3c '])
 "2}}}
 " ===[ haskell ]=== {{{2
 let g:haskell_enable_quantification           = 1

@@ -132,3 +132,5 @@ backend
 LLVM
 typechecked
 Frontend
+quicksort
+equational

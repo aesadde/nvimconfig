@@ -27,6 +27,8 @@ Plug 'junegunn/seoul256.vim'        "low contrast 'seoul colors'
 
 "Other
 Plug 'bling/vim-airline'      " status line
+Plug 'vim-airline/vim-airline-themes' " status line themes
+
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'zhaocai/GoldenView.Vim' " better splits
@@ -45,8 +47,8 @@ Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'     " git wrapper
 
 "Pandoc
-Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc,markdown,latex,tex,txt' }
-Plug 'vim-pandoc/vim-pandoc',        { 'for': 'pandoc,markdown,latex,tex,txt' }
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'rhysd/unite-redpen.vim',       { 'for': 'pandoc,markdown,latex,tex,txt' }
 
 "Scala
