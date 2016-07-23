@@ -77,12 +77,12 @@ let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 let g:deoplete#omni#input_patterns.java = [
-                \'[^. \t0-9]\.\w*',
-                \'[^. \t0-9]\->\w*',
-                \'[^. \t0-9]\::\w*',
-                \'\s[A-Z][a-z]',
-                \'^\s*@[A-Z][a-z]'
-                \]
+			\'[^. \t0-9]\.\w*',
+			\'[^. \t0-9]\->\w*',
+			\'[^. \t0-9]\::\w*',
+			\'\s[A-Z][a-z]',
+			\'^\s*@[A-Z][a-z]'
+			\]
 
 " Uses lists from similar files
 if !exists('g:deoplete_sources')
@@ -226,6 +226,9 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "2}}}
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
@@ -245,6 +248,7 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
 "===[ RedPen ]=== {{{
+let g:unite_redpen_use_legacy_config_detection=1
 "}}}
 "===[ Pandoc ]=== {{{
 "}}}

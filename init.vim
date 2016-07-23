@@ -3,15 +3,45 @@ call plug#begin('~/.config/plugins')
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
+"===[ Layout ]=== {{{2
+"Colorschemes
+Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
+Plug 'junegunn/seoul256.vim'        "low contrast 'seoul colors'
+
+"Statusline, Splits, etc.
+Plug 'bling/vim-airline'      " status line
+Plug 'vim-airline/vim-airline-themes' " status line themes
+Plug 'majutsushi/tagbar'      " Tagbar
+Plug 'zhaocai/GoldenView.Vim' " better splits
+"2}}}
+"===[ Enhancements / Tools ]=== {{{2
+Plug 'tpope/vim-commentary'   " add comments easily
+Plug 'tpope/vim-surround'     " surround things
+Plug 'Raimondi/delimitMate'   " auto close pairs
+Plug 'junegunn/vim-easy-align'
+Plug 'pgilad/vim-skeletons'  " automatically insert templates
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/vimproc.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'benekastah/neomake'  " linter a la Syntastic
-Plug 'sjl/gundo.vim'
+Plug 'ervandew/supertab'
+
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
-
+"2}}}
+"===[ Programming ]=== {{{2
+"Haskell
+Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim',         { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim',               { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
+Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
+Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 "Haskell
 Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
@@ -21,35 +51,9 @@ Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
 Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
-"Colorschemes
-Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
-Plug 'junegunn/seoul256.vim'        "low contrast 'seoul colors'
-
-"Other
-Plug 'bling/vim-airline'      " status line
-Plug 'vim-airline/vim-airline-themes' " status line themes
-
-Plug 'tpope/vim-commentary'   " add comments easily
-Plug 'tpope/vim-surround'     " surround things
-Plug 'zhaocai/GoldenView.Vim' " better splits
-Plug 'majutsushi/tagbar'      " Tagbar
-Plug 'Raimondi/delimitMate'   " auto close pairs
-Plug 'junegunn/goyo.vim'      " Distraction free writing
-Plug 'pgilad/vim-skeletons'  " automatically insert templates
-Plug 'junegunn/vim-easy-align'
-Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neoyank.vim'
-
-
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'     " git wrapper
-
-"Pandoc
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'rhysd/unite-redpen.vim',       { 'for': 'pandoc,markdown,latex,tex,txt' }
 
 "Scala
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
@@ -60,7 +64,15 @@ Plug 'eraserhd/vim-ios',       { 'for': 'cocoa,swift'} " ios options for vim
 Plug 'vim-scripts/cocoa.vim',  { 'for': 'cocoa,swift'} " cocoa plugin
 Plug 'Rip-Rip/clang_complete', { 'for': 'cocoa,swift'}
 Plug 'toyamarinyon/vim-swift', { 'for': 'cocoa,swift'} " swift support
-
+"2}}}
+" ===[ Plugins for writing ]=== {{{2
+Plug 'vim-pandoc/vim-pandoc-syntax',  { 'for': [ 'pandoc', 'tex', 'markdown' ] }
+Plug 'vim-pandoc/vim-pandoc',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'rhysd/unite-redpen.vim',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'junegunn/goyo.vim'      " Distraction free writing
+Plug 'reedes/vim-wordy',   { 'for': [ 'pandoc', 'markdown' , 'tex' ] }
+Plug 'reedes/vim-pencil',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+"2}}}
 call plug#end()
 "1}}}
 " ===[ All options ]=== {{{1
@@ -82,7 +94,7 @@ set background=dark
 colorscheme seoul256
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
-" Vim marker folding method for vimscripts {{{2
+" ===[ Vim marker folding method for vimscripts ]=== {{{2
 au! BufNewFile,BufRead * if getline(1) =~ '"ft=vim' | setf vim | endif
 
 autocmd BufWritePre * :%s/\s\+$//e
@@ -92,14 +104,14 @@ augroup filetype_vim
     autocmd FileType sh setlocal foldmethod=marker
 augroup END
 " 2}}}
-" Autoload configuration when this file changes ($MYVIMRC) {{{2
+" ===[ Autoload configuration when this file changes ($MYVIMRC) ]=== {{{2
 " Source the vimrc file after saving it
 augroup sourcing
   autocmd!
   autocmd bufwritepost $MYVIMRC source $MYVIMRC
 augroup END
 " 2}}}
-" Custom filetypes {{{2
+" ===[ Custom filetypes ]=== {{{2
 au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
 au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
 
