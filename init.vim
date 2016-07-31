@@ -22,6 +22,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'pgilad/vim-skeletons'  " automatically insert templates
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neoyank.vim'
+Plug 'osyo-manga/unite-quickfix'
 Plug 'Shougo/vimproc.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
@@ -34,14 +35,6 @@ Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
 "2}}}
 "===[ Programming ]=== {{{2
-"Haskell
-Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
-Plug 'neovimhaskell/haskell-vim',         { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim',               { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
-Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
-Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 "Haskell
 Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
@@ -66,12 +59,14 @@ Plug 'Rip-Rip/clang_complete', { 'for': 'cocoa,swift'}
 Plug 'toyamarinyon/vim-swift', { 'for': 'cocoa,swift'} " swift support
 "2}}}
 " ===[ Plugins for writing ]=== {{{2
-Plug 'vim-pandoc/vim-pandoc-syntax',  { 'for': [ 'pandoc', 'tex', 'markdown' ] }
-Plug 'vim-pandoc/vim-pandoc',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'rhysd/unite-redpen.vim',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'rhysd/unite-redpen.vim',       { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'reedes/vim-wordy',             { 'for': [ 'pandoc', 'markdown' ,'tex' ] }
+Plug 'reedes/vim-pencil',            { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'      " Distraction free writing
-Plug 'reedes/vim-wordy',   { 'for': [ 'pandoc', 'markdown' , 'tex' ] }
-Plug 'reedes/vim-pencil',  { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+
 "2}}}
 call plug#end()
 "1}}}
@@ -114,13 +109,6 @@ augroup END
 " ===[ Custom filetypes ]=== {{{2
 au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
 au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
-
-augroup pandoc
-  autocmd!
-  au FileType pandoc UltiSnipsAddFiletypes tex.markdown
-  au FileType pandoc let localleader="\\"
-  au BufEnter *.md silent! cd ..
-  augroup END
 
 " Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72

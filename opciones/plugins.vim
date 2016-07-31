@@ -6,8 +6,9 @@ let g:neomake_open_list = 2 "always open error
 let g:neomake_list_height = 5
 let g:make_place_signs=2 "place error signs always
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-let g:neomake_haskell_hlint_args = ['--hint=Dollar']
-let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
+let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
+" let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
+let g:neomake_haskell_enabled_makers = []
 " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -35,11 +36,18 @@ let g:haskell_conceal                         = 0
 let g:haskell_conceal_enumerations            = 0
 let g:haskell_hsp                             = 0
 let g:hlintRefactor#disableDefaultKeybindings = 1
-let g:ghcmod_hlint_options                    = ['--ignore=Redundant $']
+let g:ghcmod_hlint_options = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
+
+" let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
+" function! GhcModQuickFix()
+"   " for unite.vim and unite-quickfix
+"   :Unite -no-empty quickfix
+" endfunction
 
 augroup haskell
   au!
   au BufWritePost *.hs            silent !init-tags %
+  au BufWritePost *.hs GhcModCheckAndLintAsync
   au FileType haskell let g:haskellmode_completion_ghc = 0
   au FileType haskell let g:necoghc_enable_detailed_browse = 1 " Show types
   au FileType haskell set tags=tags;/,codex.tags;/
@@ -226,9 +234,9 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "2}}}
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
@@ -251,8 +259,20 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 let g:unite_redpen_use_legacy_config_detection=1
 "}}}
 "===[ Pandoc ]=== {{{
+augroup pandoc
+  autocmd!
+  au FileType pandoc UltiSnipsAddFiletypes tex.markdown
+  au FileType pandoc let localleader="\\"
+  au FileType pandoc silent! cd ..
+  au FileType pandoc call lexical#init()
+  augroup END
 "}}}
 "===[ Skeletons ]=== {{{
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/skeletons"
+"1}}}
+"===[ Lexical ]=== {{{1
+let g:lexical#spelllang = ['en_us','en_gb']
+let g:lexical#dictionary_key = '<leader>k'
+let g:lexical#spell_key = '<leader>s'
 "1}}}
