@@ -12,7 +12,7 @@ set display+=lastline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
 set smartindent " smart indent
-set autoindent
+set noautoindent
 set smarttab
 set splitright  " Make vertical splits work sanely
 set splitbelow  " Make horizontal splits work sanely

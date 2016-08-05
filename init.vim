@@ -66,6 +66,7 @@ Plug 'reedes/vim-wordy',             { 'for': [ 'pandoc', 'markdown' ,'tex' ] }
 Plug 'reedes/vim-pencil',            { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'      " Distraction free writing
+Plug 'lervag/vimtex',                { 'for': ['tex', 'latex'] }
 
 "2}}}
 call plug#end()

@@ -271,8 +271,52 @@ augroup pandoc
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/skeletons"
 "1}}}
-"===[ Lexical ]=== {{{1
+"===[ Lexical ]=== {{{
 let g:lexical#spelllang = ['en_us','en_gb']
 let g:lexical#dictionary_key = '<leader>k'
 let g:lexical#spell_key = '<leader>s'
+"}}}
+"===[ VimTex ]=== {{{
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = '\\(?:'
+      \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+      \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+      \ . '|hyperref\s*\[[^]]*'
+      \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+      \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ .')'
+let g:vimtex_complete_close_braces = 1
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_comments = 1
+
+let g:vimtex_view_general_viewer
+			\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+" This adds a callback hook that updates Skim after compilation
+let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+function! UpdateSkim(status)
+	if !a:status | return | endif
+
+	let l:out = b:vimtex.out()
+	let l:tex = expand('%:p')
+	let l:cmd = [g:vimtex_view_general_viewer, '-r']
+	if !empty(system('pgrep Skim'))
+		call extend(l:cmd, ['-g'])
+	endif
+	if has('nvim')
+		call jobstart(l:cmd + [line('.'), l:out, l:tex])
+	elseif has('job')
+		call job_start(l:cmd + [line('.'), l:out, l:tex])
+	else
+		call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+	endif
+endfunction
+
+
+"}}}
 "1}}}

@@ -101,6 +101,10 @@ endfunction
 inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 "2}}}
+"===[ VimTex ]=== {{{2
+nnoremap <localleader>lt :<c-u>Unite vimtex_toc<cr>
+nnoremap <localleader>ly :<c-u>Unite vimtex_labels<cr>
+"2}}}
 "1}}}
 " ===[ Motion ]=== {{{1
 "one screen line at a time (instead of vim line)
