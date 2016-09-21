@@ -93,14 +93,19 @@ let g:deoplete#omni#input_patterns.java = [
 			\]
 
 " Uses lists from similar files
-if !exists('g:deoplete_sources')
-    let g:deoplete_sources = {}
+if !exists('g:deoplete#sources')
+    let g:deoplete#sources = {}
 endif
-let g:deoplete_sources.c = 'cpp,d,cu' " In c buffers, completes from cpp and d buffers.
-let g:deoplete_sources.cpp = 'c' " In cpp buffers, completes from c buffers.
-let g:deoplete_sources.gitconfig = '_' " In gitconfig buffers, completes from all buffers.
-let g:deoplete_sources.scala = 'java' "Complete Scala from Java
-let g:deoplete_sources._ = '_' " In default, completes from all buffers.
+let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.
+let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.
+let g:deoplete#sources.scala = ['java'] "Complete Scala from Java
+let g:deoplete#sources.tex = ['ultisnips', 'omni']
+let g:deoplete#sources._ = [] " In default, completes from all buffers.
+if !exists('g:deoplete#ignore_sources')
+    let g:deoplete#ignore_sources = {}
+endif
+let g:deoplete#ignore_sources.tex = ['buffer']
+let g:deoplete#ignore_sources.md = ['buffer']
 
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc "enable onmincompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -200,9 +205,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 if executable('ag')
-  let g:unite_source_rec_async_command =
-    \ ['ag', '--nocolor', '--nogroup',
-    \  '--depth', '10', '-g', '']
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
   " ag is quite fast, so we increase this number
   let g:unite_source_rec_min_cache_files = 1200
   let g:unite_source_grep_recursive_opt=''
@@ -214,16 +217,9 @@ let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_source_rec_max_cache_files=10000
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
+let g:unite_force_overwrite_statusline = 1
 let g:unite_winheight = 10
-
-" Like ctrlp.vim settings.
-call unite#custom#profile('default', 'context', {
-            \   'start_insert': 0,
-            \   'winheight': 10,
-            \   'direction': 'botright',
-            \ })
-
+let g:unite_start_instert = 0
 
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
             \ 'ignore_pattern', join([

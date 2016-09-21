@@ -15,3 +15,30 @@ endsnippet
 snippet sep
 % - $1 ----------------------------------------------------------------------
 endsnippet
+
+snippet code "Insert a code listing env" b
+\begin{lstlisting}
+$1
+\end{lstlisting}
+endsnippet
+
+snippet codp "Insert a code pretty listing env" b
+\begin{lstlisting}[frame=bottomline, caption=${1: Caption},
+label=lst:${2:label}]
+$3
+\end{lstlisting}
+endsnippet
+
+snippet note "notecard" b
+---
+title: ${1: `!v expand("%:t:r")`}
+created: `date +%D`
+source: ${2: `!v expand('%:p:h:t')`}
+categories: ${4: }
+---
+
+<!-- Front -->
+${3}
+<!-- Back -->
+${4}
+endsnippet

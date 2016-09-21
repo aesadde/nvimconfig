@@ -11,6 +11,7 @@ set linebreak    " pica lineas largas en el buffer para que se vea mejor
 set display+=lastline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
+set spell
 set smartindent " smart indent
 set noautoindent
 set smarttab

@@ -86,8 +86,8 @@ if &term =~ '256color'
 endif
 
 syntax enable
-set background=dark
-colorscheme seoul256
+set background=light
+colorscheme solarized
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2
@@ -110,7 +110,7 @@ augroup END
 " ===[ Custom filetypes ]=== {{{2
 au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
 au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
-
+let g:tex_flavor = 'tex' "use always tex for latex
 " Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
