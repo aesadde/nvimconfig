@@ -9,6 +9,29 @@ let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
 " let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
 let g:neomake_haskell_enabled_makers = []
+
+let g:neomake_cpp_clang_maker = {
+            \ 'args': ['-fsyntax-only', '-std=c++14', '-Wall', '-Wextra'],
+            \ 'errorformat':
+            \ '%-G%f:%s:,' .
+            \ '%f:%l:%c: %trror: %m,' .
+            \ '%f:%l:%c: %tarning: %m,' .
+            \ '%f:%l:%c: %m,'.
+            \ '%f:%l: %trror: %m,'.
+            \ '%f:%l: %tarning: %m,'.
+            \ '%f:%l: %m',
+            \ }
+let g:neomake_cpp_clangtidy_maker = {
+            \ 'exe': 'clang-tidy',
+            \ 'args': ['--checks="modernize-*,readability-*,misc-*,clang-analyzer-*"'],
+            \ 'errorformat':
+            \ '%E%f:%l:%c: fatal error: %m,' .
+            \ '%E%f:%l:%c: error: %m,' .
+            \ '%W%f:%l:%c: warning: %m,' .
+            \ '%-G%\m%\%%(LLVM ERROR:%\|No compilation database found%\)%\@!%.%#,' .
+            \ '%E%m',
+            \ }
+let g:neomake_cpp_enabled_makers = ['clang' ]
 " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -106,6 +129,11 @@ if !exists('g:deoplete#ignore_sources')
 endif
 let g:deoplete#ignore_sources.tex = ['buffer']
 let g:deoplete#ignore_sources.md = ['buffer']
+
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/3.8.1/include/clang'
+let g:deoplete#sources#clang#std#cpp = 'c++11'
+let g:deoplete#sources#clang#sort_algo = 'priority'
 
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc "enable onmincompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -312,7 +340,5 @@ function! UpdateSkim(status)
 		call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
 	endif
 endfunction
-
-
 "}}}
 "1}}}

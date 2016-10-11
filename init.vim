@@ -7,6 +7,7 @@ endfunction
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
 Plug 'junegunn/seoul256.vim'        "low contrast 'seoul colors'
+Plug 'iCyMind/NeoSolarized'
 
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
@@ -43,6 +44,9 @@ Plug 'eagletmt/ghcmod-vim',               { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
 Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
+
+"C++
+Plug 'zchee/deoplete-clang', {'for': 'cpp'}
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -86,8 +90,11 @@ if &term =~ '256color'
 endif
 
 syntax enable
-set background=light
-colorscheme solarized
+set termguicolors
+set background=dark
+colorscheme NeoSolarized
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2
