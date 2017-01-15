@@ -24,11 +24,12 @@ Plug 'pgilad/vim-skeletons'  " automatically insert templates
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'osyo-manga/unite-quickfix'
-Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'ervandew/supertab'
+Plug 'kassio/neoterm'
 
 
 " Snippets
@@ -46,7 +47,7 @@ Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
 "C++
-Plug 'zchee/deoplete-clang', {'for': 'cpp'}
+Plug 'zchee/deoplete-clang'
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -92,7 +93,7 @@ endif
 syntax enable
 set termguicolors
 set background=dark
-colorscheme NeoSolarized
+colorscheme molokai
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 "1}}}

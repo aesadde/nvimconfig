@@ -75,7 +75,7 @@ set modelines=0                       " CVE-2007-2438
 autocmd BufEnter * :cd %:p:h          " auto-change directory to current buffer
 set dictionary+=/usr/share/dict/words
 set nobackup                          " Don't want any backup magic
-set tags=./../tags,./*/tags
+set tags=./tags,./../tags,./*/tags
 
 let $PATH = $PATH . ':' . expand("~/.local/bin") "faster tags
 
