@@ -6,14 +6,15 @@ endfunction
 "===[ Layout ]=== {{{2
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
-Plug 'junegunn/seoul256.vim'        "low contrast 'seoul colors'
-Plug 'iCyMind/NeoSolarized'
+Plug 'crusoexia/vim-monokai'
+
 
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
 Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
@@ -28,7 +29,6 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'benekastah/neomake'  " linter a la Syntastic
-Plug 'ervandew/supertab'
 Plug 'kassio/neoterm'
 
 
@@ -51,7 +51,6 @@ Plug 'zchee/deoplete-clang'
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
-Plug 'tpope/vim-fugitive'     " git wrapper
 
 "Scala
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting

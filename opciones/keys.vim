@@ -75,27 +75,27 @@ endfunction
 " From: https://github.com/Shougo/unite.vim/issues/790
 autocmd filetype unite call s:unite_settings()
 function! s:unite_settings()
-	nnoremap <silent> <buffer><expr> v unite#do_action('right')
-	inoremap <silent> <buffer><expr> <c-v> unite#do_action('right')
-	nnoremap <silent> <buffer><expr> s unite#do_action('below')
-	inoremap <silent> <buffer><expr> <c-s> unite#do_action('below')
-	nnoremap <silent> <buffer><expr> l     unite#do_action('default')
-	inoremap <silent> <buffer><expr> <c-l>
-				\ getcurpos()[1]==1 ? "\<right>" : unite#do_action('default')
-	imap <silent> <buffer> ;         <plug>(unite_choose_action)
-	nmap <silent> <buffer> ;         <plug>(unite_choose_action)
-	nmap <silent> <buffer> <c-o>     <plug>(unite_redraw)
-	imap <silent> <buffer> <c-o>     <plug>(unite_redraw)
-	imap <silent> <buffer> <c-j>     <plug>(unite_select_next_line)
-	imap <silent> <buffer> <c-k>     <plug>(unite_select_previous_line)
-	imap <silent> <buffer> <tab>     <plug>(unite_complete)
+  nnoremap <silent> <buffer><expr> v unite#do_action('right')
+  inoremap <silent> <buffer><expr> <c-v> unite#do_action('right')
+  nnoremap <silent> <buffer><expr> s unite#do_action('below')
+  inoremap <silent> <buffer><expr> <c-s> unite#do_action('below')
+  nnoremap <silent> <buffer><expr> l     unite#do_action('default')
+  inoremap <silent> <buffer><expr> <c-l>
+        \ getcurpos()[1]==1 ? "\<right>" : unite#do_action('default')
+  imap <silent> <buffer> ;         <plug>(unite_choose_action)
+  nmap <silent> <buffer> ;         <plug>(unite_choose_action)
+  nmap <silent> <buffer> <c-o>     <plug>(unite_redraw)
+  imap <silent> <buffer> <c-o>     <plug>(unite_redraw)
+  imap <silent> <buffer> <c-j>     <plug>(unite_select_next_line)
+  imap <silent> <buffer> <c-k>     <plug>(unite_select_previous_line)
+  imap <silent> <buffer> <tab>     <plug>(unite_complete)
 
-	let unite = unite#get_current_unite()
-	if unite.profile_name ==# 'search'
-		nnoremap <silent> <buffer><expr> r unite#do_action('replace')
-	else
-		nnoremap <silent> <buffer><expr> r unite#do_action('rename')
-	endif
+  let unite = unite#get_current_unite()
+  if unite.profile_name ==# 'search'
+    nnoremap <silent> <buffer><expr> r unite#do_action('replace')
+  else
+    nnoremap <silent> <buffer><expr> r unite#do_action('rename')
+  endif
 endfunction
 
 inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
@@ -104,6 +104,9 @@ nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnips
 "===[ VimTex ]=== {{{2
 nnoremap <localleader>lt :<c-u>Unite vimtex_toc<cr>
 nnoremap <localleader>ly :<c-u>Unite vimtex_labels<cr>
+"2}}}
+"====[ NERDTree ]=== {{{2
+silent! nmap <leader>nt :NERDTreeToggle<CR>
 "2}}}
 "1}}}
 " ===[ Motion ]=== {{{1
@@ -130,6 +133,22 @@ inoremap <right> <nop>
 nnoremap  <leader>ne :cnext<cr>
 nnoremap  <leader>pe :cprevious<cr>
 
+"deoplete tab completion
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+" inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"
 " Move to begining or end of line in insert mode
 imap <C-B> <C-O>0
 imap <C-E> <C-O>$

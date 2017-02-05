@@ -1,12 +1,20 @@
 " ===[ Plugins ]=== {{{1
+"===[ NerdTree]=== {{{2
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeWinSize=30
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeHighlightCursorline=0
+let g:NERDTreeRespectWildIgnore=1
+"2}}}
 " ===[ Neomake ]=== {{{2
-autocmd! BufWritePost * Neomake
+autocmd! BufWritePost *.cpp Neomake
 let g:neomake_open_list = 2 "always open error
 let g:neomake_list_height = 5
 let g:make_place_signs= 2 "place error signs always
-let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
-let g:neomake_haskell_enabled_makers = ['ghcmod', 'hlint']
+" let g:neomake_haskell_ghc_mod_args = '-g-Wall'
+" let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
+" let g:neomake_haskell_enabled_makers = ['ghcmod']
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -91,7 +99,7 @@ let delimitMate_smart_quotes = 1
 "2}}}
 " ===[  deoplete ]=== {{{2
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_completion_start_length = 3
+let g:deoplete#auto_completion_start_length = 2
 let g:deoplete#max_list = 10
 
 " Enable heavy omni completion.
@@ -116,8 +124,12 @@ endif
 let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.
 let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.
 let g:deoplete#sources.scala = ['java'] "Complete Scala from Java
+let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']
+let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']
+let g:deoplete#sources.scss = ['buffer', 'member', 'file', 'omni', 'ultisnips']
 let g:deoplete#sources.tex = ['ultisnips', 'omni']
-let g:deoplete#sources._ = [] " In default, completes from all buffers.
+let g:deoplete#sources._    = ['buffer', 'file', 'ultisnips']
+
 if !exists('g:deoplete#ignore_sources')
   let g:deoplete#ignore_sources = {}
 endif
@@ -130,7 +142,7 @@ let g:deoplete#sources#clang#std#cpp = 'c++11'
 let g:deoplete#sources#clang#sort_algo = 'priority'
 
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
@@ -252,9 +264,9 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "2}}}
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
