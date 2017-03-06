@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
+Plug  'Shougo/vimfiler.vim'
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
@@ -26,8 +27,9 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'osyo-manga/unite-quickfix'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'sbdchd/neoformat'  " code formatter
 
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'kassio/neoterm'
 

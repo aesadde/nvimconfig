@@ -6,6 +6,18 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeRespectWildIgnore=1
+
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_tree_leaf_icon = " "
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '✓'
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'
+let g:vimfiler_expand_jump_to_first_child = 0
+let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *.cpp Neomake
@@ -27,8 +39,6 @@ let g:airline_symbols.branch = '⎇' "beautifiers
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
 let g:airline#extensions#whitespace#enabled = 1
-" let g:airline_powerline_fonts = 1
-"show line count of file
 "2}}}
 " ===[ haskell ]=== {{{2
 let g:haskell_enable_quantification           = 1
@@ -100,46 +110,46 @@ let delimitMate_smart_quotes = 1
 " ===[  deoplete ]=== {{{2
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 2
-let g:deoplete#max_list = 10
+let g:deoplete#max_list = 15
 
 " Enable heavy omni completion.
-if !exists('g:deoplete#omni_patterns')
-  let g:deoplete#omni_patterns = {}
-endif
-let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:deoplete#omni#input_patterns.java = [
-      \'[^. \t0-9]\.\w*',
-      \'[^. \t0-9]\->\w*',
-      \'[^. \t0-9]\::\w*',
-      \'\s[A-Z][a-z]',
-      \'^\s*@[A-Z][a-z]'
-      \]
+" if !exists('g:deoplete#omni_patterns')
+"   let g:deoplete#omni_patterns = {}
+" endif
+" let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+" let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+" let g:deoplete#omni#input_patterns.java = [
+"       \'[^. \t0-9]\.\w*',
+"       \'[^. \t0-9]\->\w*',
+"       \'[^. \t0-9]\::\w*',
+"       \'\s[A-Z][a-z]',
+"       \'^\s*@[A-Z][a-z]'
+"       \]
 
-" Uses lists from similar files
-if !exists('g:deoplete#sources')
-  let g:deoplete#sources = {}
-endif
-let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.
-let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.
-let g:deoplete#sources.scala = ['java'] "Complete Scala from Java
-let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']
-let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.scss = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.tex = ['ultisnips', 'omni']
-let g:deoplete#sources._    = ['buffer', 'file', 'ultisnips']
+" " Uses lists from similar files
+" if !exists('g:deoplete#sources')
+"   let g:deoplete#sources = {}
+" endif
+" let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.
+" let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.
+" let g:deoplete#sources.scala = ['java'] "Complete Scala from Java
+" let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']
+" let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']
+" let g:deoplete#sources.scss = ['buffer', 'member', 'file', 'omni', 'ultisnips']
+" let g:deoplete#sources.tex = ['ultisnips', 'omni']
+" let g:deoplete#sources._    = ['buffer', 'file', 'omni', 'ultisnips']
 
-if !exists('g:deoplete#ignore_sources')
-  let g:deoplete#ignore_sources = {}
-endif
-let g:deoplete#ignore_sources.tex = ['buffer']
-let g:deoplete#ignore_sources.md = ['buffer']
+" if !exists('g:deoplete#ignore_sources')
+"   let g:deoplete#ignore_sources = {}
+" endif
+" let g:deoplete#ignore_sources.tex = ['buffer']
+" let g:deoplete#ignore_sources.md = ['buffer']
 
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/3.8.1/include/clang'
-let g:deoplete#sources#clang#std#cpp = 'c++11'
-let g:deoplete#sources#clang#sort_algo = 'priority'
+" let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
+" let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/3.8.1/include/clang'
+" let g:deoplete#sources#clang#std#cpp = 'c++11'
+" let g:deoplete#sources#clang#sort_algo = 'priority'
 
 
 autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS

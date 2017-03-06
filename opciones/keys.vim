@@ -146,8 +146,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 "
 " Move to begining or end of line in insert mode
 imap <C-B> <C-O>0
