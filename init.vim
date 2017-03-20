@@ -15,7 +15,6 @@ Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
-Plug  'Shougo/vimfiler.vim'
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
@@ -48,8 +47,11 @@ Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
 Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
+"Python
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
+
 "C++
-Plug 'zchee/deoplete-clang'
+Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -72,7 +74,7 @@ Plug 'reedes/vim-wordy',             { 'for': [ 'pandoc', 'markdown' ,'tex' ] }
 Plug 'reedes/vim-pencil',            { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'      " Distraction free writing
-Plug 'lervag/vimtex',                { 'for': ['tex', 'latex'] }
+" Plug 'lervag/vimtex',                { 'for': ['tex', 'latex'] }
 
 "2}}}
 call plug#end()
