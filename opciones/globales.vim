@@ -82,8 +82,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin") "faster tags
 "1}}}
 "===[ Folding ]=== {{{1
 set foldmethod=indent
-set foldmethod=syntax
-set foldlevel=20
+set foldlevel=99
 "1}}}
 "===[ Undo options ]=== {{{1
 " enable persistent undo

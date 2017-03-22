@@ -24,8 +24,9 @@ let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
 let g:neomake_open_list = 2 "always open error
+let g:neomake_verbose = 1
 let g:neomake_list_height = 5
-let g:make_place_signs= 2 "place error signs always
+let g:make_place_signs= 1 "place error signs always
 " let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 " let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
 " let g:neomake_haskell_enabled_makers = ['ghcmod']
@@ -354,7 +355,22 @@ function! UpdateSkim(status)
   endif
 endfunction
 "}}}
-"
+"===[ Python plugins]=== {{{2
 let g:python_host_prog = '/home/ubuntu/aifi/neovim/bin/python'
 let g:python3_host_prog = '/home/ubuntu/aifi/neovim3/bin/python'
+
+let g:SimpylFold_docstring_preview=1 "see docstrings folded code
+
+augroup python
+au!
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set textwidth=79
+au BufNewFile,BufRead *.py set expandtab
+au BufNewFile,BufRead *.py set autoindent
+au BufNewFile,BufRead *.py set fileformat=unix
+augroup END
+
+"2}}}
 "1}}}

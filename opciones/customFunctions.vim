@@ -24,6 +24,22 @@ function! QuickfixToggle()
     endif
 endfunction
 nnoremap <leader>q :call QuickfixToggle()<cr>
+
+let g:loclist_is_open = 0
+let g:error_is_open = 0
+
+function! LoclistToggle()
+    if g:loclist_is_open
+        lclose
+        let g:loclist_is_open = 0
+        execute g:loclist_return_to_window . "wincmd w"
+    else
+        let g:loclist_return_to_window = winnr()
+        lopen
+        let g:loclist_is_open = 1
+    endif
+endfunction
+nnoremap <leader>lo :call LoclistToggle()<cr>
 "1}}}
 " ===[ Trailing whitespaces ]=== {{{
 function! StripTrailingWhitespaces()

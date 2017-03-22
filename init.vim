@@ -27,6 +27,7 @@ Plug 'Shougo/neoyank.vim'
 Plug 'osyo-manga/unite-quickfix'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sbdchd/neoformat'  " code formatter
+Plug 'tmhedberg/SimpylFold'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
@@ -48,7 +49,11 @@ Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
 "Python
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
+Plug 'zchee/deoplete-jedi',          {'for': 'python'}
+Plug 'timothycrosley/isort',         {'for': 'python'}
+Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
+
+
 
 "C++
 Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
