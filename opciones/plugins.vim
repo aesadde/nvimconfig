@@ -356,8 +356,8 @@ function! UpdateSkim(status)
 endfunction
 "}}}
 "===[ Python plugins]=== {{{2
-let g:python_host_prog = '/home/ubuntu/aifi/neovim/bin/python'
-let g:python3_host_prog = '/home/ubuntu/aifi/neovim3/bin/python'
+let g:python_host_prog = $HOME.'/.conda/envs/neovim/bin/python'
+let g:python3_host_prog = $HOME.'/.conda/envs/neovim3/bin/python'
 
 let g:SimpylFold_docstring_preview=1 "see docstrings folded code
 
