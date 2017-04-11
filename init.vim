@@ -31,7 +31,7 @@ Plug 'sbdchd/neoformat'  " code formatter
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
-Plug 'kassio/neoterm'
+Plug 'ludovicchabant/vim-gutentags' "manage tags
 
 
 " Snippets

@@ -162,3 +162,5 @@ unfoldr
 foldr1
 ol
 foldr
+convolutional
+CNNs

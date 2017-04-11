@@ -306,6 +306,7 @@ augroup pandoc
   au FileType pandoc let localleader="\\"
   au FileType pandoc silent! cd ..
   au FileType pandoc call lexical#init()
+  au FileType pandoc set conceallevel=0
 augroup END
 "}}}
 "===[ Skeletons ]=== {{{
@@ -313,7 +314,7 @@ let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/skeletons"
 "1}}}
 "===[ Lexical ]=== {{{
-let g:lexical#spelllang = ['en_us','en_gb']
+let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
 let g:lexical#dictionary_key = '<leader>k'
 let g:lexical#spell_key = '<leader>s'
 "}}}
