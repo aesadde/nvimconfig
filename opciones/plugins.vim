@@ -33,6 +33,7 @@ let g:make_place_signs= 1 "place error signs always
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
+let g:goldenview_ignore_rule = ['nerdtree', 'tagbar', 'unite']
 "2}}}
 " ===[ airline ]=== {{{2
 if !exists('g:airline_symbols')
@@ -357,10 +358,11 @@ function! UpdateSkim(status)
 endfunction
 "}}}
 "===[ Python plugins]=== {{{2
-let g:python_host_prog = $HOME.'/.conda/envs/neovim/bin/python'
-let g:python3_host_prog = $HOME.'/.conda/envs/neovim3/bin/python'
-
+let g:python_host_prog = $HOME.'/anaconda3/envs/neovim/bin/python'
+let g:python3_host_prog = $HOME.'/anaconda3/envs/neovim3/bin/python'
 let g:SimpylFold_docstring_preview=1 "see docstrings folded code
+let g:deoplete#sources#jedi#show_docstring = 1
+
 
 augroup python
 au!
