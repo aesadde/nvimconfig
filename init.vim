@@ -32,6 +32,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'ludovicchabant/vim-gutentags' "manage tags
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
 " Snippets

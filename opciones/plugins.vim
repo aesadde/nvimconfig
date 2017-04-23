@@ -275,6 +275,9 @@ let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:snips_author='Alberto Sadde (@aesadde)'
+let g:snips_email='alberto@aifi.io'
 "2}}}
 "===[ Goyo ]=== {{{
 let g:goyo_width         = 82
