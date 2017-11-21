@@ -35,8 +35,6 @@ Plug 'ludovicchabant/vim-gutentags' "manage tags
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-
-
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
@@ -52,11 +50,10 @@ Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
 "Python
-Plug 'zchee/deoplete-jedi',          {'for': 'python'}
-Plug 'timothycrosley/isort',         {'for': 'python'}
-Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
-
-
+Plug 'zchee/deoplete-jedi'
+Plug 'timothycrosley/isort'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 "C++
 Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
@@ -68,21 +65,13 @@ Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'scala,java'}
 
-"iOS plugins
-Plug 'eraserhd/vim-ios',       { 'for': 'cocoa,swift'} " ios options for vim
-Plug 'vim-scripts/cocoa.vim',  { 'for': 'cocoa,swift'} " cocoa plugin
-Plug 'Rip-Rip/clang_complete', { 'for': 'cocoa,swift'}
-Plug 'toyamarinyon/vim-swift', { 'for': 'cocoa,swift'} " swift support
-"2}}}
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'rhysd/unite-redpen.vim',       { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'reedes/vim-wordy',             { 'for': [ 'pandoc', 'markdown' ,'tex' ] }
 Plug 'reedes/vim-pencil',            { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'      " Distraction free writing
-" Plug 'lervag/vimtex',                { 'for': ['tex', 'latex'] }
 
 "2}}}
 call plug#end()
