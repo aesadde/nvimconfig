@@ -23,8 +23,8 @@ let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
-let g:neomake_open_list = 2 "always open error
-let g:neomake_verbose = 1
+let g:neomake_open_list = 0 "always open error
+let g:neomake_verbose = 0
 let g:neomake_list_height = 5
 let g:make_place_signs= 1 "place error signs always
 " let g:neomake_haskell_ghc_mod_args = '-g-Wall'
@@ -116,39 +116,12 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 2
 let g:deoplete#max_list = 15
 
-"Enable heavy omni completion.
-if !exists('g:deoplete#omni_patterns')
-  let g:deoplete#omni_patterns = {}
-endif
-let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:deoplete#omni#input_patterns.java = [
-      \'[^. \t0-9]\.\w*',
-      \'[^. \t0-9]\->\w*',
-      \'[^. \t0-9]\::\w*',
-      \'\s[A-Z][a-z]',
-      \'^\s*@[A-Z][a-z]'
-      \]
-
-" Uses lists from similar files
-if !exists('g:deoplete#sources')
-  let g:deoplete#sources = {}
-endif
-let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.
-let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.
-let g:deoplete#sources.scala = ['java'] "Complete Scala from Java
-let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']
-let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.scss = ['buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.tex = ['ultisnips', 'omni']
-let g:deoplete#sources._    = ['buffer', 'file', 'omni', 'ultisnips']
-
-if !exists('g:deoplete#ignore_sources')
-  let g:deoplete#ignore_sources = {}
-endif
-let g:deoplete#ignore_sources.tex = ['buffer']
-let g:deoplete#ignore_sources.md = ['buffer']
+ if !exists('g:deoplete#omni_patterns')
+   let g:deoplete#omni_patterns = {}
+ endif
+ if !exists('g:deoplete#ignore_sources')
+   let g:deoplete#ignore_sources = {}
+ endif
 
 autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -156,6 +129,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:jedi#completions_enabled = 0
+
 
 "2}}}
 " ===[ Rainbow Parentheses ]=== {{{2
@@ -364,7 +340,8 @@ endfunction
 let g:python_host_prog = $HOME.'/miniconda3/envs/neovim/bin/python'
 let g:python3_host_prog = $HOME.'/miniconda3/envs/neovim3/bin/python'
 let g:SimpylFold_docstring_preview=1 "see docstrings folded code
-let g:deoplete#sources#jedi#show_docstring = 1
+
+let g:jedi#completions_enabled = 0
 
 augroup python
 au!

@@ -50,10 +50,10 @@ Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
 Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
 
 "Python
-Plug 'zchee/deoplete-jedi'
-Plug 'timothycrosley/isort'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
+Plug 'timothycrosley/isort',         { 'for': 'python' }
+Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 
 "C++
 Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
