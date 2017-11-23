@@ -27,6 +27,12 @@ let g:neomake_open_list = 0 "always open error
 let g:neomake_verbose = 0
 let g:neomake_list_height = 5
 let g:make_place_signs= 1 "place error signs always
+
+" Python neomake settings
+let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+
 " let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 " let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
 " let g:neomake_haskell_enabled_makers = ['ghcmod']
