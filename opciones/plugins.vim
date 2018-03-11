@@ -31,7 +31,7 @@ let g:make_place_signs= 1 "place error signs always
 " Python neomake settings
 let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
-let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=79', '--ignore=E115,E266'], }
 
 " let g:neomake_haskell_ghc_mod_args = '-g-Wall'
 " let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
@@ -279,9 +279,6 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
-"===[ RedPen ]=== {{{
-let g:unite_redpen_use_legacy_config_detection=1
-"}}}
 "===[ Pandoc ]=== {{{
 augroup pandoc
   autocmd!
@@ -292,14 +289,8 @@ augroup pandoc
   au FileType pandoc set conceallevel=0
 augroup END
 "}}}
-"===[ Skeletons ]=== {{{
-let skeletons#autoRegister = 1
-let skeletons#skeletonsDir = "~/dotfiles/nvim/skeletons"
-"1}}}
 "===[ Lexical ]=== {{{
 let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
-let g:lexical#dictionary_key = '<leader>k'
-let g:lexical#spell_key = '<leader>s'
 "}}}
 "===[ VimTex ]=== {{{
 if !exists('g:deoplete#omni#input_patterns')
@@ -359,35 +350,5 @@ au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 augroup END
-"2}}}
-"{{{2 === FZF ===
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
-" In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 "2}}}
 "1}}}
