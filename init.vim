@@ -55,6 +55,7 @@ Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 "Golang
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go'
 
 "C++
 Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
