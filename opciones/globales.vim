@@ -66,6 +66,7 @@ set wildignore+=*.spl                                " compiled spelling list
 set wildignore+=*.hi                                 " haskell bin
 set wildignore+=*.sw?                                " Vim swap files
 set wildignore+=*.DS_Store                           " OSX stuff
+set wildignore+=*.pyc,__pycache__                    " Python stuff"
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 "1}}}
 "===[ Others ]=== {{{1
@@ -130,5 +131,5 @@ augroup cline
 augroup END
 "1}}}
 " ===[ Print options ]=== {{{
-set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
+set printoptions=paper:letter,syntax:y,wrap:y,duplex:long
 " }}}

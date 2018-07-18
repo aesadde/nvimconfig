@@ -21,7 +21,6 @@ Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'junegunn/vim-easy-align'
-Plug 'pgilad/vim-skeletons'  " automatically insert templates
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'osyo-manga/unite-quickfix'
@@ -32,8 +31,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'ludovicchabant/vim-gutentags' "manage tags
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
@@ -54,6 +51,11 @@ Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
 Plug 'timothycrosley/isort',         { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
+
+"Golang
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go'
 
 "C++
 Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
