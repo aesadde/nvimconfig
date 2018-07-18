@@ -76,12 +76,14 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'reedes/vim-wordy',             { 'for': [ 'pandoc', 'markdown' ,'tex' ] }
-Plug 'reedes/vim-pencil',            { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'      " Distraction free writing
 
+" Markdown preview
+" Plug 'iamcco/mathjax-support-fomkdp'
+Plug 'iamcco/markdown-preview.vim'
 "2}}}
+
 call plug#end()
 "1}}}
 " ===[ All options ]=== {{{1
