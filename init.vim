@@ -65,6 +65,12 @@ Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'scala,java'}
 
+"Golang
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+"
+
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
