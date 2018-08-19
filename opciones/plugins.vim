@@ -8,18 +8,6 @@ let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeRespectWildIgnore=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeRespectWildIgnore=1
-
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_tree_leaf_icon = " "
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '✓'
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'
-let g:vimfiler_expand_jump_to_first_child = 0
-let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
@@ -39,7 +27,7 @@ let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=79', '--ignore=E
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
-let g:goldenview_ignore_rule = ['nerdtree', 'tagbar', 'unite']
+let g:goldenview_ignore_rule = ['nerdtree', 'tagbar']
 "2}}}
 " ===[ airline ]=== {{{2
 if !exists('g:airline_symbols')
@@ -223,32 +211,6 @@ let g:tagbar_type_tex = {
       \ ],
       \ 'sort'    : 0,
       \ }
-"2}}}
-"===[ Unite ]=== {{{2
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-if executable('ag')
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  " ag is quite fast, so we increase this number
-  let g:unite_source_rec_min_cache_files = 1200
-  let g:unite_source_grep_recursive_opt=''
-endif
-let g:unite_prompt = "➤ "
-let g:unite_enable_ignore_case = 1
-let g:unite_source_history_yank_enable = 1
-let g:unite_data_directory='~/.vim/.cache/unite'
-let g:unite_source_rec_max_cache_files=10000
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 1
-let g:unite_winheight = 10
-let g:unite_start_instert = 0
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ ], '\|'))
 "2}}}
 "===[ UltiSnips ]=== {{{2
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'

@@ -73,7 +73,7 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,.stack-work
 set directory=/tmp                    " directory to place swap files in
 set noswapfile                        " no quiero mas swaps
 set fileformats=unix,mac,dos          " support all three, in this order
-set modelines=0                       " CVE-2007-2438
+set modelines=1
 autocmd BufEnter * :cd %:p:h          " auto-change directory to current buffer
 set dictionary+=/usr/share/dict/words
 set nobackup                          " Don't want any backup magic

@@ -21,16 +21,16 @@ Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'junegunn/vim-easy-align'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neoyank.vim'
-Plug 'osyo-manga/unite-quickfix'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sbdchd/neoformat'  " code formatter
-Plug 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold' " Python folds
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'ludovicchabant/vim-gutentags' "manage tags
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
