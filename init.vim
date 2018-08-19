@@ -63,15 +63,10 @@ Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 
-"Scala
-Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
-Plug 'artur-shaik/vim-javacomplete2', {'for': 'scala,java'}
-
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'junegunn/goyo.vim'      " Distraction free writing
 
 " Markdown preview
 " Plug 'iamcco/mathjax-support-fomkdp'

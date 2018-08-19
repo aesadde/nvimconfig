@@ -261,24 +261,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:snips_author='Alberto Sadde (@aesadde)'
 let g:snips_email='alberto@aifi.io'
 "2}}}
-"===[ Goyo ]=== {{{
-let g:goyo_width         = 82
-let g:goyo_margin_top    = 2
-let g:goyo_margin_bottom = 2
-let g:goyo_linenr        = 1
-function! s:goyo_enter()
-  set noshowmode
-  set noshowcmd
-endfunction
-
-function! s:goyo_leave()
-  set showmode
-  set showcmd
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-"}}}
 "===[ Pandoc ]=== {{{
 augroup pandoc
   autocmd!
@@ -345,7 +327,7 @@ au!
 au BufNewFile,BufRead *.py set tabstop=4
 au BufNewFile,BufRead *.py set softtabstop=4
 au BufNewFile,BufRead *.py set shiftwidth=4
-au BufNewFile,BufRead *.py set textwidth=79
+au BufNewFile,BufRead *.py set textwidth=119
 au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
