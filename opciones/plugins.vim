@@ -21,9 +21,9 @@ let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
 let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=79', '--ignore=E115,E266'], }
 
-" let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-" let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
-" let g:neomake_haskell_enabled_makers = ['ghcmod']
+" Use only intero
+let g:neomake_haskell_enabled_makers = []
+
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -33,28 +33,61 @@ let g:goldenview_ignore_rule = ['nerdtree', 'tagbar']
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = '⎇' "beautifiers
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline_symbols.branch = '⎇' "beautifiers
+
+" Display full path to file
+let g:airline_section_c = '%-{getcwd()}/%t'
 "2}}}
 " ===[ haskell ]=== {{{2
-let g:haskell_enable_quantification           = 1
-let g:haskell_enable_recursivedo              = 1
-let g:haskell_enable_arrowsyntax              = 1
-let g:haskell_enable_pattern_synonyms         = 1
-let g:haskell_enable_typeroles                = 1
-let g:haskell_enable_static_pointers          = 1
-let g:haskell_conceal_wide                    = 0
-let g:haskell_conceal                         = 0
-let g:haskell_conceal_enumerations            = 0
-let g:haskell_hsp                             = 0
-let g:hlintRefactor#disableDefaultKeybindings = 1
-let g:ghcmod_hlint_options = ['--hint=Dollar','--hint=Default','--ignore=Use camelCase']
+" haskell-vim
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-let g:hindent_on_save = 1
-let g:hindent_line_length = 80
-let g:hindent_indent_size = 2
+" neovim-intero
+" Automatically reload on save
+au BufWritePost *.hs InteroReload
+" Lookup the type of expression under the cursor
+au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
+au FileType haskell nmap <silent> <leader>T <Plug>InteroType
+" Insert type declaration
+au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<CR>
+" Show info about expression or type under the cursor
+au FileType haskell nnoremap <silent> <leader>i :InteroInfo<CR>
+" Open/Close the Intero terminal window
+au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<CR>
+au FileType haskell nnoremap <silent> <leader>nh :InteroHide<CR>
+" Reload the current file into REPL
+au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<CR>
+" Jump to the definition of an identifier
+au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<CR>
+" Evaluate an expression in REPL
+au FileType haskell nnoremap <silent> <leader>ne :InteroEval<CR>
+" Start/Stop Intero
+au FileType haskell nnoremap <silent> <leader>ns :InteroStart<CR>
+au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
+" Reboot Intero, for when dependencies are added
+au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
+" Managing targets
+" Prompts you to enter targets (no silent):
+au FileType haskell nnoremap <leader>nt :InteroSetTargets<CR>
 
 augroup haskell
   au!
@@ -70,9 +103,6 @@ augroup haskell
   au FileType haskell set completeopt+=longest
 
   " haskell key bindings
-  au FileType haskell nnoremap <silent><buffer> tw :GhcModTypeInsert<CR>
-  au FileType haskell nnoremap <silent><buffer> tq :GhcModType<CR>
-  au FileType haskell nnoremap <silent><buffer> te :GhcModTypeClear<CR>
   au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
 
   " haskell abbreviations
@@ -295,4 +325,16 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 augroup END
 "2}}}
+" === [ fzf ]=== {{{2
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+" 2}}}
 "1}}}
