@@ -21,16 +21,18 @@ Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'junegunn/vim-easy-align'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neoyank.vim'
-Plug 'osyo-manga/unite-quickfix'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sbdchd/neoformat'  " code formatter
-Plug 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold' " Python folds
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
 Plug 'ludovicchabant/vim-gutentags' "manage tags
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'sheerun/vim-polyglot' " Syntax support
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
@@ -38,13 +40,11 @@ Plug 'honza/vim-snippets'  " Lots of Snippets
 "2}}}
 "===[ Programming ]=== {{{2
 "Haskell
-Plug 'eagletmt/neco-ghc',                 { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle',               { 'for': 'haskell' }
-Plug 'neovimhaskell/haskell-vim',         { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim',               { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim',     { 'for': 'haskell' }
-Plug 'Twinside/vim-syntax-haskell-cabal', { 'for': 'cabal'   }
-Plug 'Twinside/vim-haskellFold',          { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'parsonsmatt/intero-neovim'
+Plug 'alx741/vim-hindent'
+Plug 'alx741/vim-stylishask'
 
 "Python
 Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
@@ -62,10 +62,7 @@ Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
-
-"Scala
-Plug 'derekwyatt/vim-scala',          {'for': 'scala'} "Scala syntax highlighting
-Plug 'artur-shaik/vim-javacomplete2', {'for': 'scala,java'}
+Plug 'tpope/vim-fugitive'
 
 "Golang
 Plug 'fatih/vim-go', {'for': 'go'}
@@ -77,7 +74,6 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'junegunn/goyo.vim'      " Distraction free writing
 
 " Markdown preview
 " Plug 'iamcco/mathjax-support-fomkdp'

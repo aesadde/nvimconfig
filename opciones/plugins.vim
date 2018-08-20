@@ -8,18 +8,6 @@ let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeRespectWildIgnore=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeRespectWildIgnore=1
-
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_tree_leaf_icon = " "
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '✓'
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'
-let g:vimfiler_expand_jump_to_first_child = 0
-let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
@@ -33,40 +21,73 @@ let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
 let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=79', '--ignore=E115,E266'], }
 
-" let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-" let g:neomake_haskell_hlint_args = ['--hint=Dollar','--hint=Default','--ignore= Use camelCase']
-" let g:neomake_haskell_enabled_makers = ['ghcmod']
+" Use only intero
+let g:neomake_haskell_enabled_makers = []
+
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
-let g:goldenview_ignore_rule = ['nerdtree', 'tagbar', 'unite']
+let g:goldenview_ignore_rule = ['nerdtree', 'tagbar']
 "2}}}
 " ===[ airline ]=== {{{2
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = '⎇' "beautifiers
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline_symbols.branch = '⎇' "beautifiers
+
+" Display full path to file
+let g:airline_section_c = '%-{getcwd()}/%t'
 "2}}}
 " ===[ haskell ]=== {{{2
-let g:haskell_enable_quantification           = 1
-let g:haskell_enable_recursivedo              = 1
-let g:haskell_enable_arrowsyntax              = 1
-let g:haskell_enable_pattern_synonyms         = 1
-let g:haskell_enable_typeroles                = 1
-let g:haskell_enable_static_pointers          = 1
-let g:haskell_conceal_wide                    = 0
-let g:haskell_conceal                         = 0
-let g:haskell_conceal_enumerations            = 0
-let g:haskell_hsp                             = 0
-let g:hlintRefactor#disableDefaultKeybindings = 1
-let g:ghcmod_hlint_options = ['--hint=Dollar','--hint=Default','--ignore=Use camelCase']
+" haskell-vim
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-let g:hindent_on_save = 1
-let g:hindent_line_length = 80
-let g:hindent_indent_size = 2
+" neovim-intero
+" Automatically reload on save
+au BufWritePost *.hs InteroReload
+" Lookup the type of expression under the cursor
+au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
+au FileType haskell nmap <silent> <leader>T <Plug>InteroType
+" Insert type declaration
+au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<CR>
+" Show info about expression or type under the cursor
+au FileType haskell nnoremap <silent> <leader>i :InteroInfo<CR>
+" Open/Close the Intero terminal window
+au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<CR>
+au FileType haskell nnoremap <silent> <leader>nh :InteroHide<CR>
+" Reload the current file into REPL
+au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<CR>
+" Jump to the definition of an identifier
+au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<CR>
+" Evaluate an expression in REPL
+au FileType haskell nnoremap <silent> <leader>ne :InteroEval<CR>
+" Start/Stop Intero
+au FileType haskell nnoremap <silent> <leader>ns :InteroStart<CR>
+au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
+" Reboot Intero, for when dependencies are added
+au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
+" Managing targets
+" Prompts you to enter targets (no silent):
+au FileType haskell nnoremap <leader>nt :InteroSetTargets<CR>
 
 augroup haskell
   au!
@@ -82,9 +103,6 @@ augroup haskell
   au FileType haskell set completeopt+=longest
 
   " haskell key bindings
-  au FileType haskell nnoremap <silent><buffer> tw :GhcModTypeInsert<CR>
-  au FileType haskell nnoremap <silent><buffer> tq :GhcModType<CR>
-  au FileType haskell nnoremap <silent><buffer> te :GhcModTypeClear<CR>
   au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
 
   " haskell abbreviations
@@ -224,32 +242,6 @@ let g:tagbar_type_tex = {
       \ 'sort'    : 0,
       \ }
 "2}}}
-"===[ Unite ]=== {{{2
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-if executable('ag')
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  " ag is quite fast, so we increase this number
-  let g:unite_source_rec_min_cache_files = 1200
-  let g:unite_source_grep_recursive_opt=''
-endif
-let g:unite_prompt = "➤ "
-let g:unite_enable_ignore_case = 1
-let g:unite_source_history_yank_enable = 1
-let g:unite_data_directory='~/.vim/.cache/unite'
-let g:unite_source_rec_max_cache_files=10000
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 1
-let g:unite_winheight = 10
-let g:unite_start_instert = 0
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ ], '\|'))
-"2}}}
 "===[ UltiSnips ]=== {{{2
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
@@ -261,24 +253,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:snips_author='Alberto Sadde (@aesadde)'
 let g:snips_email='alberto@aifi.io'
 "2}}}
-"===[ Goyo ]=== {{{
-let g:goyo_width         = 82
-let g:goyo_margin_top    = 2
-let g:goyo_margin_bottom = 2
-let g:goyo_linenr        = 1
-function! s:goyo_enter()
-  set noshowmode
-  set noshowcmd
-endfunction
-
-function! s:goyo_leave()
-  set showmode
-  set showcmd
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-"}}}
 "===[ Pandoc ]=== {{{
 augroup pandoc
   autocmd!
@@ -345,10 +319,22 @@ au!
 au BufNewFile,BufRead *.py set tabstop=4
 au BufNewFile,BufRead *.py set softtabstop=4
 au BufNewFile,BufRead *.py set shiftwidth=4
-au BufNewFile,BufRead *.py set textwidth=79
+au BufNewFile,BufRead *.py set textwidth=119
 au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 augroup END
 "2}}}
+" === [ fzf ]=== {{{2
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+" 2}}}
 "1}}}
