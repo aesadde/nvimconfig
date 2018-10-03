@@ -15,6 +15,8 @@ Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
@@ -65,13 +67,8 @@ Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'
 
 " ===[ Plugins for writing ]=== {{{2
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-
-" Markdown preview
-" Plug 'iamcco/mathjax-support-fomkdp'
-Plug 'iamcco/markdown-preview.vim'
 "2}}}
 
 call plug#end()

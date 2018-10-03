@@ -19,7 +19,7 @@ let g:make_place_signs= 1 "place error signs always
 " Python neomake settings
 let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
-let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=79', '--ignore=E115,E266'], }
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=119', '--ignore=E115,E266'], }
 
 " Use only intero
 let g:neomake_haskell_enabled_makers = []
