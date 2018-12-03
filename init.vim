@@ -48,7 +48,6 @@ Plug 'eagletmt/neco-ghc'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'parsonsmatt/intero-neovim'
 Plug 'alx741/vim-hindent'
-Plug 'alx741/vim-stylishask'
 
 "Python
 Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }

@@ -81,6 +81,7 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+let g:hindent_indent_size = 2
 
 " neovim-intero
 " Automatically reload on save
@@ -106,7 +107,6 @@ au FileType haskell nnoremap <silent> <leader>ns :InteroStart<CR>
 au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
 " Reboot Intero, for when dependencies are added
 au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
-" Managing targets
 
 augroup haskell
   au!
