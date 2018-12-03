@@ -6,7 +6,9 @@ endfunction
 "===[ Layout ]=== {{{2
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
-Plug 'crusoexia/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'rakr/vim-two-firewatch'
+Plug 'joshdick/onedark.vim'
 
 
 "Statusline, Splits, etc.
@@ -14,8 +16,8 @@ Plug 'bling/vim-airline'      " status line
 Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
@@ -24,7 +26,6 @@ Plug 'tpope/vim-surround'     " surround things
 Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'sbdchd/neoformat'  " code formatter
 Plug 'tmhedberg/SimpylFold' " Python folds
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -33,6 +34,7 @@ Plug 'ludovicchabant/vim-gutentags' "manage tags
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-grepper'
 
 Plug 'sheerun/vim-polyglot' " Syntax support
 
@@ -66,6 +68,9 @@ Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'
 
+" Docker
+Plug 'ekalinin/Dockerfile.vim'
+
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
@@ -90,7 +95,9 @@ endif
 syntax enable
 set termguicolors
 set background=dark
-colorscheme molokai
+let g:two_firewatch_italics=1
+let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
+colorscheme two-firewatch
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 "1}}}

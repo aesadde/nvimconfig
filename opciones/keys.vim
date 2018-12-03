@@ -98,11 +98,10 @@ inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 "FZF Completion
 " imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>t :Tags<CR>
+nmap <Leader>ff :Files<CR>
+nmap <Leader>ft :Tags<CR>
+nmap <Leader>fg :GFiles<CR>
+nmap <Leader>fl :Lines<CR>
+nmap <Leader>fm :Maps<CR>
 
-"
-" Move to begining or end of line in insert mode
-imap <C-B> <C-O>0
-imap <C-E> <C-O>$
 "1}}}

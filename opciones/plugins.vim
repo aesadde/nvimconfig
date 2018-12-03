@@ -8,10 +8,30 @@ let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeRespectWildIgnore=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeRespectWildIgnore=1
+let NERDTreeDirArrows = 1
+
+"Open NERDTree when nvim starts
+autocmd VimEnter * NERDTree
+
+" Close Vim if NerdTree is last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
-let g:neomake_open_list = 0 "always open error
+let g:neomake_open_list = 2 "always open error
 let g:neomake_verbose = 0
 let g:neomake_list_height = 5
 let g:make_place_signs= 1 "place error signs always
@@ -33,6 +53,7 @@ let g:goldenview_ignore_rule = ['nerdtree', 'tagbar']
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_powerline_fonts = 1
 
 " powerline symbols
 let g:airline_left_sep = ''
@@ -86,8 +107,6 @@ au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
 " Reboot Intero, for when dependencies are added
 au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
 " Managing targets
-" Prompts you to enter targets (no silent):
-au FileType haskell nnoremap <leader>nt :InteroSetTargets<CR>
 
 augroup haskell
   au!
@@ -188,46 +207,18 @@ let g:rbpt_loadcmd_toggle = 0
 " ===[ Easyalign ]=== {{{2
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
 "2}}}
 "===[ TagBar]=== {{{2
 let g:tagbar_width=50
 " let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=0
-
-"haskell tags
-if executable('lushtags')
-  let g:tagbar_type_haskell = {
-        \ 'ctagsbin' : 'lushtags',
-        \ 'ctagsargs' : '--ignore-parse-error --',
-        \ 'kinds' : [
-        \ 'm:module:0',
-        \ 'e:exports:1',
-        \ 'i:imports:1',
-        \ 't:declarations:0',
-        \ 'd:declarations:1',
-        \ 'n:declarations:1',
-        \ 'f:functions:0',
-        \ 'c:constructors:0'
-        \ ],
-        \ 'sro' : '.',
-        \ 'kind2scope' : {
-        \ 'd' : 'data',
-        \ 'n' : 'newtype',
-        \ 'c' : 'constructor',
-        \ 't' : 'type'
-        \ },
-        \ 'scope2kind' : {
-        \ 'data' : 'd',
-        \ 'newtype' : 'n',
-        \ 'constructor' : 'c',
-        \ 'type' : 't'
-        \ }
-        \ }
-endif
 
 "Latex tags
 let g:tagbar_type_tex = {
@@ -336,5 +327,21 @@ augroup fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 " 2}}}
 "1}}}
