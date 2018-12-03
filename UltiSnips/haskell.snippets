@@ -1,4 +1,265 @@
 # vim: foldmethod=marker
+snippet case
+case ${1} of
+	${2:_} -> ${3:undefined}
+endsnippet
+
+snippet do
+do ${1:undefined}
+   ${2:undefined}
+endsnippet
+
+snippet wh
+where
+	${1:fn} = ${2:undefined}
+endsnippet
+
+snippet let
+let ${1} = ${2}
+in ${3}
+endsnippet
+
+snippet new
+newtype ${1:name} = $1 { un$1 :: ${2} }
+	deriving ($4)
+endsnippet
+
+snippet mod
+module ${1} (
+	${2},
+	) where
+endsnippet
+
+snippet if
+if ${1}
+then ${2}
+else ${3}
+endsnippet
+
+snippet im
+import qualified ${1:Data.Text} as ${2:T}
+endsnippet
+
+snippet iq
+import qualified ${1:Data.Text} as ${2:T}
+endsnippet
+
+snippet cl
+class ${1:Name} where
+	${2:name} :: ${3}
+endsnippet
+
+snippet in
+instance ${1:Class} ${2:Type} where
+	${3}
+endsnippet
+
+snippet rec
+data ${1} = ${2}
+	{ ${3} :: ${4:T}
+	} deriving (${6:classes})
+endsnippet
+
+snippet ff
+foreign import ccall safe "${1:cfunction}" ${2:name}
+		:: ${3:function}
+endsnippet
+
+snippet pra
+{-# LANGUAGE ${1} #-}
+endsnippet
+
+snippet case
+
+case ${1} of
+     ${2} -> ${3}
+endsnippet
+
+
+snippet \
+(\ ${1} -> ${2:undefined})
+endsnippet
+
+snippet bar
+-------------------------------------------------------------------------------
+-- ${1}
+-------------------------------------------------------------------------------
+endsnippet
+
+snippet mm
+import Control.Monad
+import Control.Applicative
+import Control.Monad.State
+import Control.Monad.Reader
+import Control.Monad.Except
+endsnippet
+
+snippet usual
+import Data.Maybe
+import Data.Functor
+import Data.Foldable
+import Data.Traversable
+import Control.Monad
+import Control.Applicative
+endsnippet
+
+snippet fold
+import Data.Foldable
+import Data.Traversable
+endsnippet
+
+snippet bs
+import qualified Data.ByteString as S
+import qualified Data.ByteString.Char8 as S8
+endsnippet
+
+snippet containers
+import qualified Data.HashMap.Lazy as HashMap
+import qualified Data.HashSet      as HashSet
+import qualified Data.IntMap       as IntMap
+import qualified Data.IntSet       as IntSet
+import qualified Data.IxSet        as IxSet
+import qualified Data.Map          as Map
+import qualified Data.Sequence     as Seq
+import qualified Data.Set          as Set
+endsnippet
+
+snippet str
+{-# LANGUAGE OverloadedStrings #-}
+endsnippet
+
+snippet gadt
+{-# LANGUAGE GADTs #-}
+endsnippet
+
+snippet rank
+{-# LANGUAGE RankNTypes #-}
+endsnippet
+
+snippet scope
+{-# LANGUAGE ScopedTypeVariables #-}
+endsnippet
+
+snippet ffi
+{-# LANGUAGE ForeignFunctionInterface #-}
+endsnippet
+
+snippet flex
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+endsnippet
+
+snippet syn
+{-# LANGUAGE TypeSynonymInstances #-}
+endsnippet
+
+snippet mparam
+{-# LANGUAGE MultiParamTypeClasses #-}
+endsnippet
+
+snippet bang
+{-# LANGUAGE BangPatterns #-}
+endsnippet
+
+snippet gnew
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+endsnippet
+
+snippet mono
+{-# LANGUAGE NoMonomorphismRestriction #-}
+endsnippet
+
+snippet stand
+{-# LANGUAGE StandaloneDeriving #-}
+endsnippet
+
+snippet temp
+{-# LANGUAGE TemplateHaskell #-}
+endsnippet
+
+snippet derive
+{-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveTraversable #-}
+{-# LANGUAGE DeriveFoldable #-}
+endsnippet
+
+snippet type
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE UndecidableInstances #-}
+
+import GHC.TypeLits
+import Data.Proxy
+import Data.Type.Equality
+import Data.Reflection
+import Data.Constraint
+import GHC.Exts (Constraint)
+import GHC.Prim (Any, AnyK)
+endsnippet
+
+snippet crazy
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE ExistentialQuantification #-}
+endsnippet
+
+snippet main
+main :: IO ()
+main = do
+	return ()
+endsnippet
+
+snippet opt
+{-# OPTIONS_GHC ${1} #-}
+endsnippet
+
+snippet wall
+{-# OPTIONS_GHC -Wall #-}
+endsnippet
+
+snippet nowarn
+{-# OPTIONS_GHC -fno-warn-name-shadowing  #-}
+{-# OPTIONS_GHC -fno-warn-type-defaults   #-}
+{-# OPTIONS_GHC -fno-warn-unused-do-bind  #-}
+endsnippet
+
+
+snippet dd
+deriving (Eq, Ord, Show, Typeable, Data, Generic)
+endsnippet
+
+snippet inl
+{-# INLINE ${1} #-}
+endsnippet
+
+snippet up
+{-# UNPACK #-}
+endsnippet
+
+snippet un
+undefined
+endsnippet
+snippet er
+error "${1}"
+endsnippet
+
 
 snippet haddockm
 {-|
@@ -24,16 +285,6 @@ snippet modDesc
 endsnippet
 
 # Statements {{{
-snippet sec
---------------------------------------------------------------------------------
--- $1 ------------------------------------------------------
---------------------------------------------------------------------------------
-endsnippet
-
-snippet sep
--- $1 --------------------------------------------------------------------------
-endsnippet
-
 snippet mod
 module ${1: `!v expand("%:t:r")`} where
 endsnippet
