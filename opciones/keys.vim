@@ -124,4 +124,8 @@ nmap <Leader>fm :Maps<CR>
 " Search content in the current file and in files under the current directory
 nmap <leader>g :Ag<CR>
 
+"iSort Python
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+
+
 "1}}}
