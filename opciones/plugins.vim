@@ -47,7 +47,7 @@ let g:neomake_haskell_enabled_makers = []
 " " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
-let g:goldenview_ignore_rule = ['nerdtree', 'tagbar']
+let g:goldenview_ignore_rule = ['nerdtree']
 "2}}}
 " ===[ airline ]=== {{{2
 if !exists('g:airline_symbols')
@@ -64,8 +64,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#tagbar#flags = 's'
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline_symbols.branch = '⎇' "beautifiers
 
@@ -213,25 +211,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"2}}}
-"===[ TagBar]=== {{{2
-let g:tagbar_width=50
-" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:tagbar_autofocus=1
-let g:tagbar_autoclose=0
-
-"Latex tags
-let g:tagbar_type_tex = {
-      \ 'ctagstype' : 'latex',
-      \ 'kinds'     : [
-      \ 's:sections',
-      \ 'g:graphics:0:0',
-      \ 'l:labels',
-      \ 'r:refs:1:0',
-      \ 'p:pagerefs:1:0'
-      \ ],
-      \ 'sort'    : 0,
-      \ }
 "2}}}
 "===[ UltiSnips ]=== {{{2
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'

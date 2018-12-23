@@ -68,10 +68,6 @@ nnoremap <leader>hI :HoogleInfo
 " Hoogle, close the Hoogle window
 nnoremap <silent> <leader>hz :HoogleClose<CR>
 "2}}}
-"===[ Tagbar ]=== {{{2
-"abre la lista de tags
-nnoremap <Leader>tb :TagbarToggle<CR>
-"2}}}
 "====[ NERDTree ]=== {{{2
 silent! nmap <leader>nt :NERDTreeToggle<CR>
 "2}}}

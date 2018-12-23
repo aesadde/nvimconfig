@@ -14,7 +14,6 @@ Plug 'joshdick/onedark.vim'
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
 Plug 'vim-airline/vim-airline-themes' " status line themes
-Plug 'majutsushi/tagbar'      " Tagbar
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
