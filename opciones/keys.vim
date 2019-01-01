@@ -29,11 +29,30 @@ nnoremap <Leader>= 1G=G
 "}}}
 " ===[ Plugins shortcuts ]=== {{{1
 "===[ haskell plugins ]=== {{{2
-"ghc-mod
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
+" neovim-intero
+" Automatically reload on save
+au BufWritePost *.hs InteroReload
+" Lookup the type of expression under the cursor
+au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
+au FileType haskell nmap <silent> <leader>T <Plug>InteroType
+" Insert type declaration
+au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<CR>
+" Show info about expression or type under the cursor
+au FileType haskell nnoremap <silent> <leader>i :InteroInfo<CR>
+" Open/Close the Intero terminal window
+au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<CR>
+au FileType haskell nnoremap <silent> <leader>nh :InteroHide<CR>
+" Reload the current file into REPL
+au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<CR>
+" Jump to the definition of an identifier
+au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<CR>
+" Evaluate an expression in REPL
+au FileType haskell nnoremap <silent> <leader>ne :InteroEval<CR>
+" Start/Stop Intero
+au FileType haskell nnoremap <silent> <leader>ns :InteroStart<CR>
+au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
+" Reboot Intero, for when dependencies are added
+au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
 
 " hlint
 map <silent> <leader>hr :call ApplyOneSuggestion()<CR>
@@ -48,10 +67,6 @@ nnoremap <silent> <leader>hi :HoogleInfo<CR>
 nnoremap <leader>hI :HoogleInfo
 " Hoogle, close the Hoogle window
 nnoremap <silent> <leader>hz :HoogleClose<CR>
-"2}}}
-"===[ Tagbar ]=== {{{2
-"abre la lista de tags
-nnoremap <Leader>tb :TagbarToggle<CR>
 "2}}}
 "====[ NERDTree ]=== {{{2
 silent! nmap <leader>nt :NERDTreeToggle<CR>
@@ -96,13 +111,17 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 
 "FZF Completion
-" imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>t :Tags<CR>
+nmap <Leader>ff :Files<CR>
+nmap <Leader>ft :Tags<CR>
+nmap <Leader>fg :GFiles<CR>
+nmap <Leader>fl :Lines<CR>
+nmap <Leader>fm :Maps<CR>
+" Search content in the current file and in files under the current directory
+nmap <leader>g :Ag<CR>
 
-"
-" Move to begining or end of line in insert mode
-imap <C-B> <C-O>0
-imap <C-E> <C-O>$
+"iSort Python
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+
+
 "1}}}
