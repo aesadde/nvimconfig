@@ -22,7 +22,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
-Plug 'Raimondi/delimitMate'   " auto close pairs
+" Plug 'Raimondi/delimitMate'   " auto close pairs
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'tmhedberg/SimpylFold' " Python folds
@@ -56,7 +57,7 @@ Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 
 "Golang
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
 
 "C++
@@ -71,7 +72,10 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'vimwiki/vimwiki'
 "2}}}
 
 call plug#end()
