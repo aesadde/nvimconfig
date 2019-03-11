@@ -328,6 +328,9 @@ let g:fzf_colors =
 " === [ vimwiki ]=== {{{2
 let g:vimwiki_folding='expr' "this allows the folding to work for markdown
 
+let g:vimwiki_global_ext = 0 "only files in the wiki have the vimwiki ft
+let g:vimwiki_table_mappings = 0
+
 let wiki = {}
 let wiki.path = '~/notes/'
 let wiki.syntax = 'markdown'
@@ -338,7 +341,12 @@ let wiki.path_html = '~/notes/site_html/'
 let wiki.custom_wiki2html = 'vimwiki_markdown'
 let wiki.template_ext = '.tpl'
 let wiki.auto_tags = 1
+" let wiki.custom_wiki2html = '~/dotfiles/scripts/wiki2html.sh'
 
 let g:vimwiki_list = [wiki]
+" 2}}}
+" === [ Goyo ]=== {{{2
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 " 2}}}
 "1}}}

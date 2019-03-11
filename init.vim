@@ -76,6 +76,9 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'reedes/vim-wordy'
 "2}}}
 
 call plug#end()
@@ -125,10 +128,10 @@ augroup END
 au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
 au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
 let g:tex_flavor = 'tex' "use always tex for latex
+
 " Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
 " 2}}}
 " 1}}}
 " ===[ Acknowledgments ]=== {{{1
