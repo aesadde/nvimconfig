@@ -332,16 +332,17 @@ let g:vimwiki_global_ext = 0 "only files in the wiki have the vimwiki ft
 let g:vimwiki_table_mappings = 0
 
 let wiki = {}
-let wiki.path = '~/notes/'
+let wiki.path = '$HOME/notes/'
 let wiki.syntax = 'markdown'
 let wiki.ext = '.md'
 let wiki.template_default = 'default'
-let wiki.template_path = '~/notes/templates/'
-let wiki.path_html = '~/notes/site_html/'
-let wiki.custom_wiki2html = 'vimwiki_markdown'
-let wiki.template_ext = '.tpl'
+let wiki.template_path = '$HOME/notes/build/template/'
+let wiki.path_html = '$HOME/notes/build/site_html/'
+let wiki.custom_wiki2html = '$HOME/notes/build/wiki2html.sh'
+let wiki.template_ext = '.html'
 let wiki.auto_tags = 1
-" let wiki.custom_wiki2html = '~/dotfiles/scripts/wiki2html.sh'
+let wiki.auto_export = 1
+let wiki.automatic_nested_syntaxes = 1
 
 let g:vimwiki_list = [wiki]
 " 2}}}
