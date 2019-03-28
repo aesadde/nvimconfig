@@ -350,4 +350,9 @@ let g:vimwiki_list = [wiki]
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 " 2}}}
+" === [ skeletons ]=== {{{2
+let skeletons#autoRegister = 1
+let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
+" 2}}}
+
 "1}}}

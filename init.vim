@@ -41,6 +41,7 @@ Plug 'sheerun/vim-polyglot' " Syntax support
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
+Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
 "Haskell
@@ -125,10 +126,6 @@ augroup sourcing
 augroup END
 " 2}}}
 " ===[ Custom filetypes ]=== {{{2
-au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
-au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
-let g:tex_flavor = 'tex' "use always tex for latex
-
 " Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
