@@ -11,7 +11,8 @@ let NERDTreeRespectWildIgnore=1
 let NERDTreeDirArrows = 1
 
 "Open NERDTree when nvim starts
-autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree | wincmd p
+
 
 " Close Vim if NerdTree is last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -232,6 +233,7 @@ augroup pandoc
   au FileType pandoc call lexical#init()
   au FileType pandoc set conceallevel=0
 augroup END
+  let g:pandoc#after#modules#enabled = ["nrrwrgn", "ultisnips"]
 "}}}
 "===[ Lexical ]=== {{{
 let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
@@ -323,4 +325,34 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 " 2}}}
+" === [ vimwiki ]=== {{{2
+let g:vimwiki_folding='expr' "this allows the folding to work for markdown
+
+let g:vimwiki_global_ext = 0 "only files in the wiki have the vimwiki ft
+let g:vimwiki_table_mappings = 0
+
+let wiki = {}
+let wiki.path = '$HOME/notes/'
+let wiki.syntax = 'markdown'
+let wiki.ext = '.md'
+let wiki.template_default = 'default'
+let wiki.template_path = '$HOME/notes/build/template/'
+let wiki.path_html = '$HOME/notes/build/site_html/'
+let wiki.custom_wiki2html = '$HOME/notes/build/wiki2html.sh'
+let wiki.template_ext = '.html'
+let wiki.auto_tags = 1
+let wiki.auto_export = 1
+let wiki.automatic_nested_syntaxes = 1
+
+let g:vimwiki_list = [wiki]
+" 2}}}
+" === [ Goyo ]=== {{{2
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" 2}}}
+" === [ skeletons ]=== {{{2
+let skeletons#autoRegister = 1
+let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
+" 2}}}
+
 "1}}}

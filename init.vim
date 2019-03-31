@@ -22,7 +22,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
-Plug 'Raimondi/delimitMate'   " auto close pairs
+" Plug 'Raimondi/delimitMate'   " auto close pairs
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'tmhedberg/SimpylFold' " Python folds
@@ -40,6 +41,7 @@ Plug 'sheerun/vim-polyglot' " Syntax support
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
+Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
 "Haskell
@@ -56,7 +58,7 @@ Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 
 "Golang
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
 
 "C++
@@ -75,7 +77,13 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
+Plug 'vimwiki/vimwiki'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'reedes/vim-wordy'
 "2}}}
 
 call plug#end()
@@ -122,13 +130,9 @@ augroup sourcing
 augroup END
 " 2}}}
 " ===[ Custom filetypes ]=== {{{2
-au! BufRead,BufNewfile *.fun set filetype=haskell "Fun Language (Oxford)
-au! BufNewFile,BufRead *.scpt set filetype=javascript "Osx scripts"
-let g:tex_flavor = 'tex' "use always tex for latex
 " Git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
 " 2}}}
 " 1}}}
 " ===[ Acknowledgments ]=== {{{1
