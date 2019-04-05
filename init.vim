@@ -44,11 +44,6 @@ Plug 'honza/vim-snippets'  " Lots of Snippets
 Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
-"Haskell
-Plug 'eagletmt/neco-ghc'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'parsonsmatt/intero-neovim'
-Plug 'alx741/vim-hindent'
 
 "Python
 Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
@@ -60,9 +55,6 @@ Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
-
-"C++
-Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit

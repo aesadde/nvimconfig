@@ -4,8 +4,8 @@ set title        " para darle a la ventana el nombre del archivo
 set nowrap       " una linea de texto por pantalla
 set number       " show line numbers
 set lazyredraw   " redraw screen only when needed
-set textwidth=79 " maximo de caracteres por linea
-set formatoptions=tcq
+set textwidth=80 " maximo de caracteres por linea
+set formatoptions+=tcq
 set showmatch    " show matching brackets
 set cursorline   " set cursorcolumn
 set linebreak    " pica lineas largas en el buffer para que se vea mejor
