@@ -22,19 +22,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
-" Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'tmhedberg/SimpylFold' " Python folds
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benekastah/neomake'  " linter a la Syntastic
-Plug 'ludovicchabant/vim-gutentags' "manage tags
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-grepper'
 
 Plug 'sheerun/vim-polyglot' " Syntax support
 

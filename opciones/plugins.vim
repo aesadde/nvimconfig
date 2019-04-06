@@ -2,17 +2,12 @@
 "===[ NerdTree]=== {{{2
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeWinSize=30
-let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeHighlightCursorline=0
-let g:NERDTreeRespectWildIgnore=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeDirArrows = 1
-
-"Open NERDTree when nvim starts
-autocmd VimEnter * NERDTree | wincmd p
-
+let NERDTreeHijackNetrw=1
 
 " Close Vim if NerdTree is last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -29,6 +24,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+silent! nmap <leader>nt :NERDTreeToggle<CR>
 "2}}}
 " ===[ Neomake ]=== {{{2
 autocmd! BufWritePost *  Neomake
@@ -38,12 +35,8 @@ let g:neomake_list_height = 5
 let g:make_place_signs= 1 "place error signs always
 
 " Python neomake settings
-let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
+let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
-let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=119', '--ignore=E115,E266'], }
-
-" Use only intero
-let g:neomake_haskell_enabled_makers = []
 
 " " 2}}}
 " ===[ golden-view ]=== {{{2
@@ -137,23 +130,7 @@ augroup haskell
   au FileType haskell inoreab <buffer> io IO ()
 augroup END
 "2}}}
-" ===[ delimitMate ]=== {{{2
-let delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_excluded_regions = "Comment,String"
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_space = 1
-let delimitMate_apostrophes = ''
-let delimitMate_autoclose = 1
-let delimitMate_balance_matchpairs = 1
-let delimitMate_eol_marker = ''
-let delimitMate_excluded_ft = ''
-let delimitMate_jump_expansion = 1
-let delimitMate_nesting_quotes = []
-let delimitMate_quotes = '" '' `'
-let delimitMate_smart_matchpairs = '^\%(\w\|\!\|£\|\$\|_\|["'']\s*\S\)'
-let delimitMate_smart_quotes = 1
-"2}}}
-" ===[  deoplete ]=== {{{2
+" ===[ deoplete ]=== {{{2
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 2
 let g:deoplete#max_list = 15
@@ -173,8 +150,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:jedi#completions_enabled = 0
-
-
 "2}}}
 " ===[ Rainbow Parentheses ]=== {{{2
 au VimEnter * RainbowParenthesesToggle
@@ -211,7 +186,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
 "2}}}
 "===[ UltiSnips ]=== {{{2
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
@@ -238,48 +212,8 @@ augroup END
 "===[ Lexical ]=== {{{
 let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
 "}}}
-"===[ VimTex ]=== {{{
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = '\\(?:'
-      \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-      \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-      \ . '|hyperref\s*\[[^]]*'
-      \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-      \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ .')'
-let g:vimtex_complete_close_braces = 1
-let g:vimtex_fold_enabled = 1
-let g:vimtex_fold_comments = 1
-
-let g:vimtex_view_general_viewer
-      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-" This adds a callback hook that updates Skim after compilation
-let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
-function! UpdateSkim(status)
-  if !a:status | return | endif
-
-  let l:out = b:vimtex.out()
-  let l:tex = expand('%:p')
-  let l:cmd = [g:vimtex_view_general_viewer, '-r']
-  if !empty(system('pgrep Skim'))
-    call extend(l:cmd, ['-g'])
-  endif
-  if has('nvim')
-    call jobstart(l:cmd + [line('.'), l:out, l:tex])
-  elseif has('job')
-    call job_start(l:cmd + [line('.'), l:out, l:tex])
-  else
-    call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-  endif
-endfunction
-"}}}
 "===[ Python plugins]=== {{{2
+
 let g:python_host_prog = $HOME.'/miniconda3/envs/neovim/bin/python'
 let g:python3_host_prog = $HOME.'/miniconda3/envs/neovim3/bin/python'
 let g:SimpylFold_docstring_preview=1 "see docstrings folded code
@@ -296,6 +230,9 @@ au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 augroup END
+
+"iSort Python
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 "2}}}
 " === [ fzf ]=== {{{2
 let g:fzf_action = {
@@ -308,6 +245,17 @@ augroup fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
+
+"FZF Completion
+nmap ; :Buffers<CR>
+nmap <Leader>ff :Files<CR>
+nmap <Leader>ft :Tags<CR>
+nmap <Leader>fg :GFiles<CR>
+nmap <Leader>fl :Lines<CR>
+nmap <Leader>fm :Maps<CR>
+"
+" Search content in the current file and in files under the current directory
+nmap <leader>g :Ag<CR>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -354,5 +302,4 @@ autocmd! User GoyoLeave Limelight!
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
 " 2}}}
-
 "1}}}
