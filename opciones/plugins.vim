@@ -27,18 +27,6 @@ let g:NERDTreeIndicatorMapCustom = {
 
 silent! nmap <leader>nt :NERDTreeToggle<CR>
 "2}}}
-" ===[ Neomake ]=== {{{2
-autocmd! BufWritePost *  Neomake
-let g:neomake_open_list = 2 "always open error
-let g:neomake_verbose = 0
-let g:neomake_list_height = 5
-let g:make_place_signs= 1 "place error signs always
-
-" Python neomake settings
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
-
-" " 2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
 let g:goldenview_ignore_rule = ['nerdtree']
@@ -231,8 +219,6 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 augroup END
 
-"iSort Python
-autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 "2}}}
 " === [ fzf ]=== {{{2
 let g:fzf_action = {
@@ -302,4 +288,17 @@ autocmd! User GoyoLeave Limelight!
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
 " 2}}}
-"1}}}
+" === [ ale ]=== {{{2
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+let g:ale_linters = {
+      \ 'python': ['flake8', 'vulture'],
+      \ }
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements'],
+      \ }
+"2}}}
+""1}}}
