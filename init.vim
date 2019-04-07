@@ -9,6 +9,9 @@ Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
 Plug 'tomasr/molokai'
 Plug 'rakr/vim-two-firewatch'
 Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vim-airline'
 
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
@@ -76,10 +79,9 @@ source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom function
 "===[ color options ]=== {{{1
 syntax enable
 set termguicolors
-set background=dark
-let g:two_firewatch_italics=1
-let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
-colorscheme two-firewatch
+let ayucolor="mirage"   " for dark version of theme
+let g:airline_theme='ayu' " if you have Airline installed and want the associated theme
+colorscheme ayu
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2
