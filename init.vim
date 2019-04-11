@@ -9,11 +9,12 @@ Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
 Plug 'tomasr/molokai'
 Plug 'rakr/vim-two-firewatch'
 Plug 'joshdick/onedark.vim'
-
+Plug 'dracula/vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vim-airline'
 
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
-Plug 'vim-airline/vim-airline-themes' " status line themes
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -22,19 +23,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
-" Plug 'Raimondi/delimitMate'   " auto close pairs
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'tmhedberg/SimpylFold' " Python folds
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'benekastah/neomake'  " linter a la Syntastic
-Plug 'ludovicchabant/vim-gutentags' "manage tags
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-grepper'
 
 Plug 'sheerun/vim-polyglot' " Syntax support
 
@@ -44,25 +40,16 @@ Plug 'honza/vim-snippets'  " Lots of Snippets
 Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
-"Haskell
-Plug 'eagletmt/neco-ghc'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'parsonsmatt/intero-neovim'
-Plug 'alx741/vim-hindent'
+Plug 'w0rp/ale'
 
 "Python
 Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
-Plug 'timothycrosley/isort',         { 'for': 'python' }
-Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 
 "Golang
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
-
-"C++
-Plug 'zchee/deoplete-clang', {'for': ['clang','cpp'] }
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -85,31 +72,20 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'reedes/vim-wordy'
 "2}}}
-
 call plug#end()
 "1}}}
 " ===[ All options ]=== {{{1
+source $HOME/dotfiles/nvim/opciones/keys.vim            " maps and keys
 source $HOME/dotfiles/nvim/opciones/plugins.vim
 source $HOME/dotfiles/nvim/opciones/globales.vim        " global options
-source $HOME/dotfiles/nvim/opciones/keys.vim            " maps and keys
 source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom functions
 "1}}}
 "===[ color options ]=== {{{1
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
 syntax enable
 set termguicolors
-set background=dark
-let g:two_firewatch_italics=1
-let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
-colorscheme two-firewatch
-set t_8f=^[[38;2;%lu;%lu;%lum
-set t_8b=^[[48;2;%lu;%lu;%lum
+let ayucolor="mirage"   " for dark version of theme
+let g:airline_theme='ayu' " if you have Airline installed and want the associated theme
+colorscheme ayu
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2

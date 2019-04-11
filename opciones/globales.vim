@@ -1,11 +1,11 @@
 "Opciones Globales
-"===[ Gui options ]===" {{{1
+"===[ GUI options ]===" {{{1
 set title        " para darle a la ventana el nombre del archivo
 set nowrap       " una linea de texto por pantalla
 set number       " show line numbers
 set lazyredraw   " redraw screen only when needed
-set textwidth=79 " maximo de caracteres por linea
-set formatoptions=tcq
+set textwidth=80 " maximo de caracteres por linea
+set formatoptions+=tcq
 set showmatch    " show matching brackets
 set cursorline   " set cursorcolumn
 set linebreak    " pica lineas largas en el buffer para que se vea mejor
@@ -24,8 +24,8 @@ set shiftround
 set expandtab
 set softtabstop=2
 set tabstop=2
-set ignorecase  " estas dos opciones sirven para
-set smartcase   " buscar mejor, ignora mayusculas
+set ignorecase  " better search ignoring capital letters
+set smartcase
 
 filetype on
 filetype plugin on
@@ -39,8 +39,8 @@ endif
 "1}}}
 "===[ Disable all bells ]=== {{{1
 set t_vb=
-set novisualbell " esto sirve para que VIM no suene xD
-set noerrorbells " esto para que no ladille cuando hay errores
+set novisualbell " disable visual bell
+set noerrorbells " disable error bell
 autocmd! GUIEnter * set vb t_vb=
 "1}}}"
 "===[ Line Return on reopening ]=== {{{1
