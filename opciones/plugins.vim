@@ -47,6 +47,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline_symbols.branch = '⎇' "beautifiers
 
 " Display full path to file
@@ -117,27 +118,6 @@ augroup haskell
   au FileType haskell inoreab <buffer> nothing Nothing
   au FileType haskell inoreab <buffer> io IO ()
 augroup END
-"2}}}
-" ===[ deoplete ]=== {{{2
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_completion_start_length = 2
-let g:deoplete#max_list = 15
-
- if !exists('g:deoplete#omni_patterns')
-   let g:deoplete#omni_patterns = {}
- endif
- if !exists('g:deoplete#ignore_sources')
-   let g:deoplete#ignore_sources = {}
- endif
-
-autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:jedi#completions_enabled = 0
 "2}}}
 " ===[ Rainbow Parentheses ]=== {{{2
 au VimEnter * RainbowParenthesesToggle
@@ -299,5 +279,18 @@ let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements'],
       \ }
+"2}}}
+" === [ golang ]=== {{{2
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_sameids = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_type_info = 1
 "2}}}
 ""1}}}

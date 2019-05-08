@@ -18,6 +18,7 @@ Plug 'bling/vim-airline'      " status line
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentLine'
 
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
@@ -25,9 +26,6 @@ Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -40,15 +38,15 @@ Plug 'honza/vim-snippets'  " Lots of Snippets
 Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
 Plug 'w0rp/ale'
 
 "Python
-Plug 'zchee/deoplete-jedi' ,         { 'for': 'python' }
 Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
 
 "Golang
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
 
 " Git
