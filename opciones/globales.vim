@@ -26,6 +26,12 @@ set tabstop=2
 set ignorecase  " better search ignoring capital letters
 set smartcase
 
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
 filetype on
 filetype plugin on
 filetype indent on
