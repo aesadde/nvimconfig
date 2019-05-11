@@ -201,7 +201,6 @@ augroup END
 let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
 "}}}
 "===[ Python plugins]=== {{{2
-
 let g:python_host_prog = $HOME.'/miniconda3/envs/neovim/bin/python'
 let g:python3_host_prog = $HOME.'/miniconda3/envs/neovim3/bin/python'
 let g:SimpylFold_docstring_preview=1 "see docstrings folded code
