@@ -18,7 +18,7 @@ Plug 'bling/vim-airline'      " status line
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
