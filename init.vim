@@ -53,6 +53,10 @@ Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'
 
+"Golang
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
 
