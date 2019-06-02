@@ -1,13 +1,3 @@
-"==[ Fold colunmn toggle ]== {{{1
-function! FoldColumnToggle()
-    if &foldcolumn
-        setlocal foldcolumn = 0
-    else
-        setlocal foldcolumn = 4
-    endif
-endfunction
-nnoremap <leader>tf :call FoldColumnToggle()<cr>
-"1}}}
 " ==[ Toggles quickfix list ]== {{{1
 let g:quickfix_is_open = 0
 let g:error_is_open = 0
@@ -61,6 +51,4 @@ function! WordCount()
   let v:statusmsg = s:old_status
   return s:word_count
 endfunction
-
-
 "}}}

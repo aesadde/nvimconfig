@@ -169,15 +169,6 @@ let g:snips_author='Alberto Sadde (@aesadde)'
 let g:snips_email='alberto@aifi.io'
 "2}}}
 "===[ Pandoc ]=== {{{
-augroup pandoc
-  autocmd!
-  au FileType pandoc UltiSnipsAddFiletypes tex.markdown
-  au FileType pandoc let localleader="\\"
-  au FileType pandoc silent! cd ..
-  au FileType pandoc call lexical#init()
-  au FileType pandoc set conceallevel=0
-augroup END
-  let g:pandoc#after#modules#enabled = ["nrrwrgn", "ultisnips"]
 "}}}
 "===[ Lexical ]=== {{{
 let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
