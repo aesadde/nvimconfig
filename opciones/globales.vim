@@ -14,6 +14,9 @@ set modeline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
 set spell
+set spelllang+="en_us"
+set spelllang+="es"
+set spelllang+="it"
 set smartindent " smart indent
 set noautoindent
 set smarttab

@@ -42,20 +42,9 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 Plug 'w0rp/ale'
 
-"Python
-Plug 'davidhalter/jedi-vim',         { 'for': 'python' }
-
-"Golang
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'fatih/vim-go'
-
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'
-
-"Golang
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'

@@ -42,7 +42,6 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
@@ -168,11 +167,6 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:snips_author='Alberto Sadde (@aesadde)'
 let g:snips_email='alberto@aifi.io'
 "2}}}
-"===[ Pandoc ]=== {{{
-"}}}
-"===[ Lexical ]=== {{{
-let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']
-"}}}
 "===[ Python plugins]=== {{{2
 let g:python_host_prog = $HOME.'/miniconda3/envs/neovim/bin/python'
 let g:python3_host_prog = $HOME.'/miniconda3/envs/neovim3/bin/python'
