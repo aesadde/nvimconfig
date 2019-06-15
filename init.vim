@@ -12,12 +12,15 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ayu-theme/ayu-vim-airline'
+Plug 'drewtempelmeyer/palenight.vim'
+
 
 "Statusline, Splits, etc.
 Plug 'bling/vim-airline'      " status line
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentLine'
 "Plug 'Yggdroot/indentLine'
 
 "2}}}
@@ -68,10 +71,16 @@ source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom function
 "1}}}
 "===[ color options ]=== {{{1
 syntax enable
-set termguicolors
-let ayucolor="mirage"   " for dark version of theme
-let g:airline_theme='ayu' " if you have Airline installed and want the associated theme
-colorscheme ayu
+if (has("termguicolors"))
+  set termguicolors
+endif
+set background=dark
+if $ITERM_PROFILE == "ayu"
+  let ayucolor="mirage"   " for dark version of theme
+  colorscheme ayu
+elseif $ITERM_PROFILE == "palenight"
+  colorscheme palenight
+endif
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2

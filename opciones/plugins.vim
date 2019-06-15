@@ -272,4 +272,8 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_type_info = 1
 "2}}}
+" === [ IndentLine ]=== {{{2
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+"2}}}
 ""1}}}
