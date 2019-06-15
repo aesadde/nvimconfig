@@ -11,17 +11,13 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'ayu-theme/ayu-vim-airline'
 Plug 'drewtempelmeyer/palenight.vim'
 
-
 "Statusline, Splits, etc.
-Plug 'bling/vim-airline'      " status line
 Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
-"Plug 'Yggdroot/indentLine'
 
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
@@ -51,7 +47,7 @@ Plug 'tpope/vim-fugitive'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
-
+"2}}}
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -75,12 +71,36 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-if $ITERM_PROFILE == "ayu"
-  let ayucolor="mirage"   " for dark version of theme
-  colorscheme ayu
-elseif $ITERM_PROFILE == "palenight"
-  colorscheme palenight
-endif
+" Match the color theme used in iterm
+colorscheme $ITERM_PROFILE
+"1}}}
+"===[ statusline ]=== {{{1
+" Function: display errors from Ale in statusline
+function! LinterStatus() abort
+   let l:counts = ale#statusline#Count(bufnr(''))
+   let l:all_errors = l:counts.error + l:counts.style_error
+   let l:all_non_errors = l:counts.total - l:all_errors
+   return l:counts.total == 0 ? '' : printf(
+   \ 'W:%d E:%d',
+   \ l:all_non_errors,
+   \ l:all_errors
+   \)
+endfunction
+set laststatus=2
+set statusline=
+set statusline+=%0*\ %{toupper(mode())} "display Mode
+set statusline+=%2*\ %l/%L:%c "display Line/Total lines : current column
+set statusline+=\ %*
+set statusline+=%1*\ ‹‹
+set statusline+=%3*\ %F "display full file path
+set statusline+=%1*\ ››
+set statusline+=%=
+set statusline+=%3*\ %{LinterStatus()} "display ALE status
+set statusline+=%3*\ ‹‹
+set statusline+=\ %{(&fenc!=''?&fenc:&enc)} "display file encoding
+set statusline+=%3*\ ::
+set statusline+=%3*\ %p "display percentage of file (where we are)
+set statusline+=%3*\ ››\ %*
 "1}}}
 " ===[ Useful autocommands ]===  {{{1
 " ===[ Vim marker folding method for vimscripts ]=== {{{2
