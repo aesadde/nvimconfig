@@ -72,7 +72,11 @@ if (has("termguicolors"))
 endif
 set background=dark
 " Match the color theme used in iterm
-colorscheme $ITERM_PROFILE
+if !empty($ITERM_PROFILE)
+  colorscheme $ITERM_PROFILE
+else
+  colorscheme palenight
+endif
 "1}}}
 "===[ statusline ]=== {{{1
 " Function: display errors from Ale in statusline
