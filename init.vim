@@ -55,7 +55,6 @@ Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'vimwiki/vimwiki'
 "2}}}
 call plug#end()
 "1}}}
