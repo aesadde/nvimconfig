@@ -138,19 +138,12 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger="<c-j>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 let g:snips_author='Alberto Sadde (@aesadde)'
-let g:snips_email='alberto@aifi.io'
+let g:snips_email='albertosadde@gmail.com'
 "2}}}
 "===[ Python plugins]=== {{{2
 let g:python_host_prog = $HOME.'/miniconda3/envs/neovim/bin/python'
 let g:python3_host_prog = $HOME.'/miniconda3/envs/neovim3/bin/python'
-let g:SimpylFold_docstring_preview=1 "see docstrings folded code
-
-let g:jedi#completions_enabled = 0
-
 augroup python
 au!
 au BufNewFile,BufRead *.py set tabstop=4
@@ -201,21 +194,11 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-" 2}}}
-" " === [ vimwiki ]=== {{{2
-" let g:vimwiki_folding='expr' "this allows the folding to work for markdown
-" let g:vimwiki_global_ext = 0 "only files in the wiki have the vimwiki ft
-" let g:vimwiki_table_mappings = 0
-" let wiki = {}
-" let wiki.path = '$HOME/Projects/'
-" let wiki.syntax = 'markdown'
-" let wiki.ext = '.md'
-" let wiki.auto_tags = 1
-" let wiki.auto_export = 1
-" let wiki.automatic_nested_syntaxes = 1
-" au FileType vimwiki set filetype=vimwiki.pandoc
-" let g:vimwiki_list = [wiki]
-" 2}}}
+"2}}}
+" === [ wiki.vim ]=== {{{2
+let g:wiki_filetypes = ['markdown', 'pandoc']
+let g:wiki_root = '$HOME/Projects/wiki'
+"2}}}
 " === [ Goyo ]=== {{{2
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
