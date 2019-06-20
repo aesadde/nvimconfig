@@ -199,6 +199,9 @@ let g:fzf_colors =
 let g:wiki_filetypes = ['markdown', 'pandoc']
 let g:wiki_root = '$HOME/Projects/wiki'
 "2}}}
+" === [ pandoc, markdown ] === {{{2
+au FileType pandoc nnoremap <leader>t :call InsertCb()<CR>
+"2}}}
 " === [ Goyo ]=== {{{2
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
