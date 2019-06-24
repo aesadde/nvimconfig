@@ -52,10 +52,3 @@ function! WordCount()
   return s:word_count
 endfunction
 "}}}
-"
-function! InsertCb()
-  let l:lnum=line('.')
-  let l:line=getline(l:lnum)
-  let l:new_line="- [ ] " . l:line
-  call setline(l:lnum, l:new_line)
-endfunction
