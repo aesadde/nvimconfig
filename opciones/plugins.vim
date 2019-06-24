@@ -25,7 +25,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-silent! nmap <leader>nt :NERDTreeToggle<CR>
+silent! nmap <leader>nt :NERDTreeToggle<cr>
 "2}}}
 " ===[ golden-view ]=== {{{2
 let g:goldenview__enable_default_mapping = 0
@@ -49,23 +49,23 @@ au BufWritePost *.hs InteroReload
 au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
 au FileType haskell nmap <silent> <leader>T <Plug>InteroType
 " Insert type declaration
-au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<CR>
+au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<cr>
 " Show info about expression or type under the cursor
-au FileType haskell nnoremap <silent> <leader>i :InteroInfo<CR>
+au FileType haskell nnoremap <silent> <leader>i :InteroInfo<cr>
 " Open/Close the Intero terminal window
-au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<CR>
-au FileType haskell nnoremap <silent> <leader>nh :InteroHide<CR>
+au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<cr>
+au FileType haskell nnoremap <silent> <leader>nh :InteroHide<cr>
 " Reload the current file into REPL
-au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<CR>
+au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<cr>
 " Jump to the definition of an identifier
-au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<CR>
+au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<cr>
 " Evaluate an expression in REPL
-au FileType haskell nnoremap <silent> <leader>ne :InteroEval<CR>
+au FileType haskell nnoremap <silent> <leader>ne :InteroEval<cr>
 " Start/Stop Intero
-au FileType haskell nnoremap <silent> <leader>ns :InteroStart<CR>
-au FileType haskell nnoremap <silent> <leader>nk :InteroKill<CR>
+au FileType haskell nnoremap <silent> <leader>ns :InteroStart<cr>
+au FileType haskell nnoremap <silent> <leader>nk :InteroKill<cr>
 " Reboot Intero, for when dependencies are added
-au FileType haskell nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
+au FileType haskell nnoremap <silent> <leader>nr :InteroKill<cr> :InteroOpen<cr>
 
 augroup haskell
   au!
@@ -81,7 +81,7 @@ augroup haskell
   au FileType haskell set completeopt+=longest
 
   " haskell key bindings
-  au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
+  au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<cr>
 
   " haskell abbreviations
   au FileType haskell inoreab <buffer> int Int
@@ -169,15 +169,18 @@ augroup fzf
 augroup END
 
 "FZF Completion
-nmap ; :Buffers<CR>
-nmap <Leader>ff :Files<CR>
-nmap <Leader>ft :Tags<CR>
-nmap <Leader>fg :GFiles<CR>
-nmap <Leader>fl :Lines<CR>
-nmap <Leader>fm :Maps<CR>
-"
+nmap <silent><leader>; :Buffers<cr>
+nmap <silent><leader>o :Files<cr>
+nmap <silent><leader>fo :Files<space>
+nmap <silent><leader>l :Lines<cr>
+nmap <leader>ft :Tags<cr>
+nmap <leader>fg :GFiles<cr>
+nmap <leader>fm :Maps<cr>
+nmap <leader>fs :Snippets<cr>
+nmap <leader>fc :History:<cr>
 " Search content in the current file and in files under the current directory
-nmap <leader>g :Ag<CR>
+nmap <leader>g :Rg<cr>
+
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -194,6 +197,19 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" Custom find
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 "2}}}
 " === [ Goyo ]=== {{{2
 autocmd! User GoyoEnter Limelight
