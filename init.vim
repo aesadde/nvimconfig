@@ -51,7 +51,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " ===[ Plugins for writing ]=== {{{2
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'

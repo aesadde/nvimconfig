@@ -169,7 +169,7 @@ augroup fzf
 augroup END
 
 "FZF Completion
-nmap <silent><leader>; :Buffers<cr>
+nmap ; :Buffers<cr>
 nmap <silent><leader>o :Files<cr>
 nmap <silent><leader>fo :Files<space>
 nmap <silent><leader>l :Lines<cr>
@@ -215,6 +215,9 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 " 2}}}
+" === [ pandoc ]=== {{{2
+let g:pandoc#syntax#conceal#use = 0
+" 2}}}
 " === [ skeletons ]=== {{{2
 let skeletons#autoRegister = 1
 let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
@@ -247,5 +250,6 @@ let g:go_auto_type_info = 1
 " === [ IndentLine ]=== {{{2
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
+let g:indentLine_char = '|'
 "2}}}
 ""1}}}

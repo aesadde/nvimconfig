@@ -12,7 +12,7 @@ nnoremap <leader>ww :edit $VIM_VIKI_HOME/index.md<cr>
 
 augroup Viki " {{{1
   autocmd!
-  autocmd BufEnter,BufNewFile $VIM_VIKI_HOME/* call viki#init()<cr>
+  autocmd BufNewFile,BufRead *.md call viki#init()
 augroup END
 "1}}}
 function! viki#init() "{{{1
