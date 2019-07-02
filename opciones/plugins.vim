@@ -217,6 +217,7 @@ autocmd! User GoyoLeave Limelight!
 " 2}}}
 " === [ pandoc ]=== {{{2
 let g:pandoc#syntax#conceal#use = 0
+nnoremap <buffer><cr> :call pandoc#hypertext#OpenLink( g:pandoc#hypertext#edit_open_cmd )<CR>
 " 2}}}
 " === [ skeletons ]=== {{{2
 let skeletons#autoRegister = 1

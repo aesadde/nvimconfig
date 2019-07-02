@@ -18,17 +18,10 @@ augroup END
 function! viki#init() "{{{1
   setlocal ft=pandoc
   setlocal textwidth=80
-  nnoremap <buffer><cr> :call viki#follow_link()<cr>
+
   nnoremap <buffer><bs> :b#<cr>
   nnoremap <buffer><leader>t :call viki#insert_cb()<cr>
   nnoremap <buffer><leader>al :call viki#insert_link()<cr>
-endfunction
-"1}}}
-function! viki#follow_link() "{{{1
-
-  let l:md = expand("<cword>")
-  silent! write
-  execute 'edit ' $VIM_VIKI_HOME.'/'.l:md.'.md'
 endfunction
 "1}}}
 function! viki#insert_cb() "{{{1
