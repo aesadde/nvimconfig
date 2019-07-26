@@ -226,7 +226,7 @@ let skeletons#skeletonsDir = "~/dotfiles/nvim/UltiSnips"
 " === [ ale ]=== {{{2
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_linters = {
       \ 'python': ['flake8', 'vulture'],
       \ }
@@ -252,5 +252,16 @@ let g:go_auto_type_info = 1
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 let g:indentLine_char = '|'
+"2}}}
+" === [ Java ]=== {{{2
+augroup java
+  au!
+  au FileType java set tabstop=4
+  au FileType java set softtabstop=4
+  au FileType java set shiftwidth=4
+  au FileType java set textwidth=80
+  au FileType java set expandtab
+  au FileType java set autoindent
+augroup END
 "2}}}
 ""1}}}

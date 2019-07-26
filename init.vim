@@ -37,8 +37,7 @@ Plug 'honza/vim-snippets'  " Lots of Snippets
 Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 
 " Git

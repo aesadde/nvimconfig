@@ -13,8 +13,6 @@ set display+=lastline
 set modeline
 "1}}}
 "===[ Text Formatting options ]=== {{{1
-set spell
-set spelllang=en_us
 set smartindent " smart indent
 set noautoindent
 set smarttab
@@ -85,7 +83,6 @@ set modelines=1
 autocmd BufEnter * :cd %:p:h          " auto-change directory to current buffer
 set dictionary+=/usr/share/dict/words
 set nobackup                          " Don't want any backup magic
-set tags=./tags,./../tags,./*/tags
 
 let $PATH = $PATH . ':' . expand("~/.local/bin") "faster tags
 

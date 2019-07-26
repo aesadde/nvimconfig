@@ -18,6 +18,9 @@ augroup END
 function! viki#init() "{{{1
   setlocal ft=pandoc
   setlocal textwidth=80
+  set spell
+  set spelllang=en_us,es
+  set formatoptions+=t
 
   nnoremap <buffer><bs> :b#<cr>
   nnoremap <buffer><leader>t :call viki#insert_cb()<cr>
