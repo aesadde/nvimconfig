@@ -42,3 +42,12 @@ function! viki#insert_link() abort " {{{1
   call setline(l:lnum, l:new_line)
 endfunction
 "1}}}
+
+function! viki#create_weekly_plan() abort " {{{1
+  let l:fname = strftime("%Y-%m-%d") . "-plan.md"
+  silent exe ":e " . fnameescape($VIM_VIKI_PLAN . '/' . l:fname)
+  echo "Opened " . l:fname
+endfunction
+
+
+"1}}}

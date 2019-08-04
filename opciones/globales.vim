@@ -134,13 +134,6 @@ augroup cline
   au InsertEnter * set cursorline
   au InsertLeave * set cursorline
 augroup END
-
-"relative numbers
-augroup every
-  autocmd!
-  au InsertEnter * set norelativenumber
-  au InsertLeave * set relativenumber
-augroup END
 "1}}}
 " ===[ Print options ]=== {{{
 set printoptions=paper:letter,syntax:y,wrap:y,duplex:long
