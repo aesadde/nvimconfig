@@ -43,12 +43,23 @@ function! StripTrailingWhitespaces()
 endfunction
 " }}}
 "===[ Word Count] === {{{
-" from: http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
-function! WordCount()
-  let s:old_status = v:statusmsg
-  exe "silent normal g\<c-g>"
-  let s:word_count = str2nr(split(v:statusmsg)[11])
-  let v:statusmsg = s:old_status
-  return s:word_count
+let g:word_count="<unknown>"
+function WordCount()
+  return g:word_count
 endfunction
+function UpdateWordCount()
+  let lnum = 1
+  let n = 0
+  while lnum <= line('$')
+    let n = n + len(split(getline(lnum)))
+    let lnum = lnum + 1
+  endwhile
+  let g:word_count = n
+endfunction
+" Update the count when cursor is idle in command or insert mode.
+" Update when idle for 1000 msec (default is 4000 msec).
+set updatetime=1000
+augroup WordCounter
+  au! CursorHold,CursorHoldI * call UpdateWordCount()
+augroup END
 "}}}

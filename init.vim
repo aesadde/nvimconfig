@@ -12,6 +12,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sjl/badwolf'
+Plug 'reedes/vim-colors-pencil'
 
 "Statusline, Splits, etc.
 Plug 'zhaocai/GoldenView.Vim' " better splits
@@ -99,6 +101,8 @@ set statusline+=%=
 set statusline+=%3*\ %{LinterStatus()} "display ALE status
 set statusline+=%3*\ ‹‹
 set statusline+=\ %{(&fenc!=''?&fenc:&enc)} "display file encoding
+set statusline+=%3*\ ::
+set statusline+=\ %{WordCount()}\ words,
 set statusline+=%3*\ ::
 set statusline+=%3*\ %p "display percentage of file (where we are)
 set statusline+=%3*\ ››\ %*
