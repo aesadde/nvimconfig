@@ -1,6 +1,6 @@
 ---
 title: ${1: `!v expand("%:t:r")`}
-title:  01-august
+created: ${2: \today}
 tags: newsletter
 ---
 
