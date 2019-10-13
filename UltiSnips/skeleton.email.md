@@ -1,10 +1,8 @@
 ---
 title: ${1: `!v expand("%:t:r")`}
-created: ${2: \today}
+created: `date +%D`
 tags: newsletter
 ---
-
-Hi All!
 
 ### What I am reading 📚
 

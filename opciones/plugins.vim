@@ -8,23 +8,11 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeDirArrows = 1
 let NERDTreeHijackNetrw=1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 
 " Close Vim if NerdTree is last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-
 silent! nmap <leader>nt :NERDTreeToggle<cr>
 "2}}}
 " ===[ golden-view ]=== {{{2
@@ -212,8 +200,8 @@ let g:fzf_colors =
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 "2}}}
 " === [ Goyo ]=== {{{2
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 " 2}}}
 " === [ pandoc ]=== {{{2
 let g:pandoc#syntax#conceal#use = 0
@@ -245,8 +233,11 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_auto_type_info = 1
+let g:go_highlight_types = 0
+let g:go_def_mapping_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_play_browser_command = 'open %URL% &'
+let g:go_metalinter_autosave = 1
 "2}}}
 " === [ IndentLine ]=== {{{2
 let g:indentLine_showFirstIndentLevel = 1

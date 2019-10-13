@@ -27,6 +27,7 @@ Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -41,6 +42,8 @@ Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "===[ Programming ]=== {{{2
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
+
+Plug 'fatih/vim-go' "Golang
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
@@ -67,6 +70,8 @@ source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom function
 "===[ color options ]=== {{{1
 syntax enable
 if (has("termguicolors"))
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 set background=dark

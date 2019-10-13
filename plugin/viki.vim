@@ -13,7 +13,7 @@ nnoremap <leader>ww :edit $VIM_VIKI_HOME/index.md<cr>
 augroup Viki " {{{1
   autocmd!
   autocmd BufNewFile,BufRead *.md call viki#init()
-  autocmd BufNewFile,BufRead *.md :Goyo
+  autocmd BufNewFile,BufRead *.md :Goyo 90
 augroup END
 "1}}}
 function! viki#init() "{{{1
@@ -21,11 +21,9 @@ function! viki#init() "{{{1
   setlocal textwidth=80
   setlocal spell
   setlocal spelllang=en_us,es
-  setlocal formatoptions=ant
-  setlocal noautoindent
-  setlocal nocindent
-  setlocal nosmartindent
-  setlocal indentexpr=
+  setlocal formatoptions=want
+  setlocal wrap
+  setlocal foldmethod=expr
   setlocal wrapmargin=0
   colorscheme pencil
 

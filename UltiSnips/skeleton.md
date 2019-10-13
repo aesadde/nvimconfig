@@ -5,3 +5,5 @@ tags: ${2: }
 ---
 
 ${3}
+
+## References

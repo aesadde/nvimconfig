@@ -44,10 +44,10 @@ endfunction
 " }}}
 "===[ Word Count] === {{{
 let g:word_count="<unknown>"
-function WordCount()
+function! WordCount()
   return g:word_count
 endfunction
-function UpdateWordCount()
+function! UpdateWordCount()
   let lnum = 1
   let n = 0
   while lnum <= line('$')
