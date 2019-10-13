@@ -1,8 +1,8 @@
-#nvim config
+# Neovim config
 
-nvim configuration that I currently use
+This is the Neovim configuration that I currently use.
 
-Basically lots of plugins.
+The main file is `init.vim`. 
 
 I try to keep things fairly tidy:
 
