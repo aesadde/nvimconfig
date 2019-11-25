@@ -27,7 +27,7 @@ endsnippet
 snippet note "notecard" b
 ---
 title: ${1: `!v expand("%:t:r")`}
-created: `date +%D`
+created: `date +%Y-%M-%d`
 source: ${2: `!v expand('%:p:h:t')`}
 categories: ${4: }
 ---
@@ -42,10 +42,18 @@ snippet btitle "book"
 ---
 started: ${1}
 ended: ${2}
-title: ${3: `!v expand("%:t:r")`}
+created: `date +%Y-%M-%d`
+title:  ${3}
 subtitle: ${4}
 author: ${5}
-publisher: ${6}
-my-rating: ${7}
+publisher:
+rating: ${6}/10
+kind: book
+link: ${7}
+thumbnail: ${8}
+isbn-13: ${9}
+isbn-10: ${10}
+blurb: >
+	${11}
 ---
 endsnippet

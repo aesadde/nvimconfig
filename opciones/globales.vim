@@ -11,6 +11,7 @@ set cursorline   " set cursorcolumn
 set linebreak    " pica lineas largas en el buffer para que se vea mejor
 set display+=lastline
 set modeline
+set mouse=a
 "1}}}
 "===[ Text Formatting options ]=== {{{1
 set smartindent " smart indent

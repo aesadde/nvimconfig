@@ -10,10 +10,12 @@ Plug 'tomasr/molokai'
 Plug 'rakr/vim-two-firewatch'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sjl/badwolf'
 Plug 'reedes/vim-colors-pencil'
+Plug 'morhetz/gruvbox'
 
 "Statusline, Splits, etc.
 Plug 'zhaocai/GoldenView.Vim' " better splits
@@ -26,7 +28,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -57,7 +58,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 "2}}}
 call plug#end()
 "1}}}
@@ -70,16 +71,18 @@ source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom function
 "===[ color options ]=== {{{1
 syntax enable
 if (has("termguicolors"))
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-set background=dark
 " Match the color theme used in iterm
 if !empty($ITERM_PROFILE)
   colorscheme $ITERM_PROFILE
 else
   colorscheme palenight
+endif
+if strftime("%H") < 21
+  set background=light
+else
+  set background=dark
 endif
 "1}}}
 "===[ statusline ]=== {{{1

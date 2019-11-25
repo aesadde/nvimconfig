@@ -59,5 +59,7 @@
 	"java.format.settings.url": "/Users/aesadde/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
 	"java.format.comments.enabled": true,
 	"java.import.gradle.wrapper.enabled": true,
-	"java.autobuild.enabled": true
+	"java.autobuild.enabled": true,
+  "yaml.hover": false,
+  "yaml.validate": false
 }

@@ -1,6 +1,6 @@
 ---
 title: ${1: `!v expand("%:t:r")`}
-created: `date +%D`
+created: `date +%Y-%M-%d`
 tags: ${2: }
 ---
 

@@ -3,29 +3,22 @@
 " add `export VIM_VIKI_HOME=$HOME/Dropbox/example` to .bashrc
 
 " features:
-"   - open index with <space>ww
 "   - type a word (foo) and press return on it to create foo.md
 "   - backspace takes you back a file
 "   - Insert checkbox
 
-nnoremap <leader>ww :edit $VIM_VIKI_HOME/index.md<cr>
-
 augroup Viki " {{{1
   autocmd!
   autocmd BufNewFile,BufRead *.md call viki#init()
-  autocmd BufNewFile,BufRead *.md :Goyo 90
+  " autocmd BufNewFile,BufRead *.md :Goyo 90
 augroup END
 "1}}}
 function! viki#init() "{{{1
   setlocal ft=pandoc
-  setlocal textwidth=80
   setlocal spell
   setlocal spelllang=en_us,es
-  setlocal formatoptions=want
-  setlocal wrap
   setlocal foldmethod=expr
-  setlocal wrapmargin=0
-  colorscheme pencil
+  setlocal nonumber
 
   nnoremap <buffer><bs> :b#<cr>
   nnoremap <buffer><leader>t :call viki#insert_cb()<cr>
@@ -53,6 +46,5 @@ function! viki#create_weekly_plan() abort " {{{1
   silent exe ":e " . fnameescape($VIM_VIKI_PLAN . '/' . l:fname)
   echo "Opened " . l:fname
 endfunction
-
 
 "1}}}
