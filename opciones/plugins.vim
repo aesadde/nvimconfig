@@ -255,4 +255,9 @@ augroup java
   au FileType java set autoindent
 augroup END
 "2}}}
+"==== [ fzf notational velocity ]=== {{{2
+let g:nv_search_paths = ['~/notes', '~/Projects']
+let g:nv_default_extension = '.md'
+let g:nv_window_direction = 'up'
+"2}}}
 ""1}}}

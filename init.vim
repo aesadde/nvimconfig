@@ -59,6 +59,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
 Plug 'junegunn/goyo.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'https://github.com/alok/notational-fzf-vim'
 "2}}}
 call plug#end()
 "1}}}
