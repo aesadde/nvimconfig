@@ -80,11 +80,11 @@ if !empty($ITERM_PROFILE)
 else
   colorscheme palenight
 endif
-if strftime("%H") < 21
-  set background=light
-else
-  set background=dark
-endif
+" if strftime("%H") < 21
+"   set background=light
+" else
+set background=dark
+" endif
 "1}}}
 "===[ statusline ]=== {{{1
 " Function: display errors from Ale in statusline

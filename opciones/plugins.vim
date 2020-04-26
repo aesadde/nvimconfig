@@ -237,7 +237,6 @@ let g:go_highlight_types = 0
 let g:go_def_mapping_enabled = 0
 let g:go_code_completion_enabled = 0
 let g:go_play_browser_command = 'open %URL% &'
-let g:go_metalinter_autosave = 1
 "2}}}
 " === [ IndentLine ]=== {{{2
 let g:indentLine_showFirstIndentLevel = 1

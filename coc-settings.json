@@ -1,5 +1,5 @@
 {
-	"suggest.maxCompleteItemCount": 10,
+	"suggest.maxCompleteItemCount": 5,
 	"coc.preferences.formatOnSaveFiletypes": ["go"],
 	"coc.preferences.jumpCommand": "split",
 	"diagnostic.virtualText": true,
