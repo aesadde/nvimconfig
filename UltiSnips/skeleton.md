@@ -1,9 +1,10 @@
 ---
-title: ${1: `!v expand("%:t:r")`}
-created: `date +%Y-%M-%d`
-tags: ${2: }
+title: `!v expand("%:t:r:s? ?-?")`
+created: [[`date +%Y-%m-%d`]]
 ---
 
-${3}
+# `!v expand("%:t:r:s? ?-?")`
 
-## References
+${1}
+
+## Related

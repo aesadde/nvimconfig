@@ -1,4 +1,4 @@
-" ===[ vim-plug init ]=== {{{1
+"VimwikiBacklinks* ===[ vim-plug init ]=== {{{1
 call plug#begin('~/.config/plugins')
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -22,6 +22,7 @@ Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
+
 
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
@@ -57,9 +58,9 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'junegunn/goyo.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'vimwiki/vimwiki'
 Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'dkarter/bullets.vim'
 "2}}}
 call plug#end()
 "1}}}
@@ -71,18 +72,25 @@ source $HOME/dotfiles/nvim/opciones/customFunctions.vim " simple custom function
 "1}}}
 "===[ color options ]=== {{{1
 syntax enable
-if (has("termguicolors"))
+" Ensure 256 colour support if the terminal supports it
+if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
+    let g:enable_bold_font = 1
+    let g:enable_italic_font = 1
+endif
+
+" This is what sets vim to use 24-bit colors. It will also work for any version of neovim
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
 " Match the color theme used in iterm
 if !empty($ITERM_PROFILE)
   colorscheme $ITERM_PROFILE
 else
   colorscheme palenight
 endif
-" if strftime("%H") < 21
-"   set background=light
-" else
 set background=dark
 " endif
 "1}}}

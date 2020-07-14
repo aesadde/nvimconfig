@@ -12,6 +12,7 @@ set linebreak    " pica lineas largas en el buffer para que se vea mejor
 set display+=lastline
 set modeline
 set mouse=a
+set autoread "reloads content if file changed somewhere else
 "1}}}
 "===[ Text Formatting options ]=== {{{1
 set smartindent " smart indent
@@ -26,6 +27,7 @@ set softtabstop=2
 set tabstop=2
 set ignorecase  " better search ignoring capital letters
 set smartcase
+set conceallevel=0
 
 set hidden
 set cmdheight=2

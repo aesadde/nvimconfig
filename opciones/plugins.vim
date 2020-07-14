@@ -161,7 +161,8 @@ nmap ; :Buffers<cr>
 nmap <silent><leader>o :Files<cr>
 nmap <silent><leader>fo :Files<space>
 nmap <silent><leader>l :Lines<cr>
-nmap <leader>ft :Tags<cr>
+nmap <leader>ft :NV <space>#
+nmap <leader>fn :NV <space>
 nmap <leader>fg :GFiles<cr>
 nmap <leader>fm :Maps<cr>
 nmap <leader>fs :Snippets<cr>
@@ -186,23 +187,19 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Custom find
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+" " Custom find
+" " --column: Show column number
+" " --line-number: Show line number
+" " --no-heading: Do not show file headings in results
+" " --fixed-strings: Search term as a literal string
+" " --ignore-case: Case insensitive search
+" " --no-ignore: Do not respect .gitignore, etc...
+" " --hidden: Search hidden files and folders
+" " --follow: Follow symlinks
+" " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" " --color: Search color options
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 "2}}}
-" === [ Goyo ]=== {{{2
-" autocmd! User GoyoEnter Limelight
-" autocmd! User GoyoLeave Limelight!
-" 2}}}
 " === [ pandoc ]=== {{{2
 let g:pandoc#syntax#conceal#use = 0
 nnoremap <buffer><cr> :call pandoc#hypertext#OpenLink( g:pandoc#hypertext#edit_open_cmd )<CR>
@@ -240,8 +237,9 @@ let g:go_play_browser_command = 'open %URL% &'
 "2}}}
 " === [ IndentLine ]=== {{{2
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
-let g:indentLine_char = '|'
+" let g:indentLine_setColors = 0
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_fileTypeExclude = ['markdown', 'vimwiki', 'pandoc']
 "2}}}
 " === [ Java ]=== {{{2
 augroup java
@@ -254,9 +252,23 @@ augroup java
   au FileType java set autoindent
 augroup END
 "2}}}
-"==== [ fzf notational velocity ]=== {{{2
-let g:nv_search_paths = ['~/notes', '~/Projects']
+"==== [ vimwiki ]=== {{{2
+" augroup vimwiki
+"   au FileType vimwiki set ft=markdown,pandoc
+" augroup END
+
+nmap <Leader>tt <Plug>VimwikiToggleListItem
+vmap <Leader>tt <Plug>VimwikiToggleListItem
+nmap <Leader>bl :VimwikiBacklinks<CR>
+
+let g:vimwiki_list = [{'path': '~/Projects/notes',
+      \ 'syntax': 'markdown', 'ext': '.md', 'index': 'start',
+      \ 'diary_rel_path' : ''}]
+let g:vimwiki_conceallevel = 0
+let g:vimwiki_folding='list'
+
+let g:nv_search_paths = ['~/Projects/notes', '~/Projects/ARCHIVE']
 let g:nv_default_extension = '.md'
-let g:nv_window_direction = 'up'
+let g:nv_wrap_preview_text = 1
 "2}}}
 ""1}}}
