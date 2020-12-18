@@ -1,10 +1,11 @@
 ---
-title: `!v expand("%:t:r:s? ?-?")`
+title: `!v expand("%:t:r")`
 created: [[`date +%Y-%m-%d`]]
+metadata:
 ---
 
-# `!v expand("%:t:r:s? ?-?")`
+# `!v expand("%:t:r")`
 
 ${1}
 
-## Related
+## References

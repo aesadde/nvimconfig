@@ -36,6 +36,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'sheerun/vim-polyglot' " Syntax support
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
 Plug 'honza/vim-snippets'  " Lots of Snippets
@@ -86,13 +88,16 @@ if exists('+termguicolors')
 endif
 
 " Match the color theme used in iterm
-if !empty($ITERM_PROFILE)
+set background=dark
+if has("gui_vimr")
+  colorscheme solarized
+  set background=light
+  set conceallevel=0
+elseif !empty($ITERM_PROFILE)
   colorscheme $ITERM_PROFILE
 else
   colorscheme palenight
 endif
-set background=dark
-" endif
 "1}}}
 "===[ statusline ]=== {{{1
 " Function: display errors from Ale in statusline
