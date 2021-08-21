@@ -22,8 +22,6 @@ Plug 'zhaocai/GoldenView.Vim' " better splits
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
-
-
 "2}}}
 "===[ Enhancements / Tools ]=== {{{2
 Plug 'tpope/vim-commentary'   " add comments easily
@@ -35,8 +33,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'sheerun/vim-polyglot' " Syntax support
-
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
@@ -60,9 +56,14 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'vimwiki/vimwiki'
-Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'dkarter/bullets.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['pandoc', 'markdown', 'vim-plug']}
+
+" tabular plugin is used to format tables
+Plug 'godlygeek/tabular'
+" JSON front matter highlight plugin
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
 "2}}}
 call plug#end()
 "1}}}

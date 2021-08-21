@@ -252,23 +252,4 @@ augroup java
   au FileType java set autoindent
 augroup END
 "2}}}
-"==== [ vimwiki ]=== {{{2
-" augroup vimwiki
-"   au FileType vimwiki set ft=markdown,pandoc
-" augroup END
-
-nmap <Leader>tt <Plug>VimwikiToggleListItem
-vmap <Leader>tt <Plug>VimwikiToggleListItem
-nmap <Leader>bl :VimwikiBacklinks<CR>
-
-let g:vimwiki_list = [{'path': '~/Projects/notes',
-      \ 'syntax': 'markdown', 'ext': '.md', 'index': 'start',
-      \ 'diary_rel_path' : ''}]
-let g:vimwiki_conceallevel = 0
-let g:vimwiki_folding='list'
-
-let g:nv_search_paths = ['~/Projects/notes', '~/Projects/ARCHIVE']
-let g:nv_default_extension = '.md'
-let g:nv_wrap_preview_text = 1
-"2}}}
 ""1}}}
