@@ -5,6 +5,8 @@
 	"diagnostic.virtualText": true,
 	"diagnostic.checkCurrentLine": true,
 	"signature.target": "echo",
+	"suggest.floatEnable": false,
+	"diagnostic.messageTarget": "echo",
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
@@ -55,11 +57,5 @@
 			"filetypes": ["hs", "lhs", "haskell"],
 			"initializationOptions": {}
 		}
-	},
-	"java.format.settings.url": "/Users/aesadde/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
-	"java.format.comments.enabled": true,
-	"java.import.gradle.wrapper.enabled": true,
-	"java.autobuild.enabled": true,
-  "yaml.hover": false,
-  "yaml.validate": false
+	}
 }

@@ -30,31 +30,6 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:hindent_indent_size = 2
 
-" neovim-intero
-" Automatically reload on save
-au BufWritePost *.hs InteroReload
-" Lookup the type of expression under the cursor
-au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
-au FileType haskell nmap <silent> <leader>T <Plug>InteroType
-" Insert type declaration
-au FileType haskell nnoremap <silent> <leader>ni :InteroTypeInsert<cr>
-" Show info about expression or type under the cursor
-au FileType haskell nnoremap <silent> <leader>i :InteroInfo<cr>
-" Open/Close the Intero terminal window
-au FileType haskell nnoremap <silent> <leader>nn :InteroOpen<cr>
-au FileType haskell nnoremap <silent> <leader>nh :InteroHide<cr>
-" Reload the current file into REPL
-au FileType haskell nnoremap <silent> <leader>nf :InteroLoadCurrentFile<cr>
-" Jump to the definition of an identifier
-au FileType haskell nnoremap <silent> <leader>ng :InteroGoToDef<cr>
-" Evaluate an expression in REPL
-au FileType haskell nnoremap <silent> <leader>ne :InteroEval<cr>
-" Start/Stop Intero
-au FileType haskell nnoremap <silent> <leader>ns :InteroStart<cr>
-au FileType haskell nnoremap <silent> <leader>nk :InteroKill<cr>
-" Reboot Intero, for when dependencies are added
-au FileType haskell nnoremap <silent> <leader>nr :InteroKill<cr> :InteroOpen<cr>
-
 augroup haskell
   au!
   au FileType haskell setlocal makeprg=stack
@@ -158,11 +133,9 @@ augroup END
 
 "FZF Completion
 nmap ; :Buffers<cr>
-nmap <silent><leader>o :Files<cr>
+map <silent><leader>o :Files<cr>
 nmap <silent><leader>fo :Files<space>
 nmap <silent><leader>l :Lines<cr>
-nmap <leader>ft :NV <space>#
-nmap <leader>fn :NV <space>
 nmap <leader>fg :GFiles<cr>
 nmap <leader>fm :Maps<cr>
 nmap <leader>fs :Snippets<cr>
@@ -186,19 +159,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-
-" " Custom find
-" " --column: Show column number
-" " --line-number: Show line number
-" " --no-heading: Do not show file headings in results
-" " --fixed-strings: Search term as a literal string
-" " --ignore-case: Case insensitive search
-" " --no-ignore: Do not respect .gitignore, etc...
-" " --hidden: Search hidden files and folders
-" " --follow: Follow symlinks
-" " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" " --color: Search color options
-" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 "2}}}
 " === [ pandoc ]=== {{{2
 let g:pandoc#syntax#conceal#use = 0
@@ -252,4 +212,23 @@ augroup java
   au FileType java set autoindent
 augroup END
 "2}}}
-""1}}}
+" === [ Markdown ] === {{{2
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+" do not close the preview tab when switching to other buffers
+let g:mkdp_auto_close = 0
+" 2}}}
+"===[ dashboard ]=== {{{2
+let g:dashboard_default_executive ='fzf'
+"2}}}
+"1}}}

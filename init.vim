@@ -4,6 +4,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 "===[ Layout ]=== {{{2
+
 "Colorschemes
 Plug 'kien/rainbow_parentheses.vim' "Multi-color parantheses
 Plug 'tomasr/molokai'
@@ -27,12 +28,16 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'   " add comments easily
 Plug 'tpope/vim-surround'     " surround things
 Plug 'jiangmiao/auto-pairs'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'glepnir/dashboard-nvim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'sheerun/vim-polyglot' " Syntax support
+Plug 'sheerun/vim-polyglot' " Syntax support for a lot of languages
+Plug 'ekalinin/Dockerfile.vim' " Docker
+
 
 " Snippets
 Plug 'SirVer/ultisnips'    " Track the engine.
@@ -41,29 +46,24 @@ Plug 'pgilad/vim-skeletons' " file template using UltiSnips
 "2}}}
 "===[ Programming ]=== {{{2
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'w0rp/ale'
-
 Plug 'fatih/vim-go' "Golang
 
 " Git
 Plug 'airblade/vim-gitgutter' " see which lines have changed from last commit
 Plug 'tpope/vim-fugitive'
 
-" Docker
-Plug 'ekalinin/Dockerfile.vim'
 "2}}}
 " ===[ Plugins for writing ]=== {{{2
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-lexical',           { 'for': [ 'pandoc', 'markdown', 'tex' ] }
-Plug 'dkarter/bullets.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['pandoc', 'markdown', 'vim-plug']}
-
-" tabular plugin is used to format tables
-Plug 'godlygeek/tabular'
-" JSON front matter highlight plugin
-Plug 'elzr/vim-json'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'godlygeek/tabular' " tabular plugin is used to format tables
+Plug 'elzr/vim-json' " JSON front matter highlight plugin
 Plug 'plasticboy/vim-markdown'
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+
 "2}}}
 call plug#end()
 "1}}}
@@ -101,17 +101,6 @@ else
 endif
 "1}}}
 "===[ statusline ]=== {{{1
-" Function: display errors from Ale in statusline
-function! LinterStatus() abort
-   let l:counts = ale#statusline#Count(bufnr(''))
-   let l:all_errors = l:counts.error + l:counts.style_error
-   let l:all_non_errors = l:counts.total - l:all_errors
-   return l:counts.total == 0 ? '' : printf(
-   \ 'W:%d E:%d',
-   \ l:all_non_errors,
-   \ l:all_errors
-   \)
-endfunction
 set laststatus=2
 set statusline=
 set statusline+=%0*\ %{toupper(mode())} "display Mode
@@ -121,7 +110,6 @@ set statusline+=%1*\ ‹‹
 set statusline+=%3*\ %F "display full file path
 set statusline+=%1*\ ››
 set statusline+=%=
-set statusline+=%3*\ %{LinterStatus()} "display ALE status
 set statusline+=%3*\ ‹‹
 set statusline+=\ %{(&fenc!=''?&fenc:&enc)} "display file encoding
 set statusline+=%3*\ ::
@@ -153,7 +141,6 @@ augroup END
 autocmd Filetype gitcommit setlocal spell textwidth=72
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " 2}}}
-" 1}}}
 " ===[ Acknowledgments ]=== {{{1
 " Many things in these files are taken from elsewhere
 " bitbucket.org/sjl/dotfiles/src/cbbbc897e9b3/vim/vimrc
